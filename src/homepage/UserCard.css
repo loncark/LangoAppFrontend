@@ -1,0 +1,37 @@
+#titlePart {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#texts>* {
+    margin: 0px;
+}
+
+#image {
+    height: 85px;
+    width: 85px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.p-card-body, .p-card {
+    width: 300px;
+    height: fit-content;
+}
+
+.p-card-content {
+    padding: 0px;
+}
+
+Button {
+    margin-top: 10px;
+}
