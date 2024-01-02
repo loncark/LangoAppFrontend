@@ -1,0 +1,7 @@
+#loginPage {
+    display: flex;
+    flex-direction: row;
+    padding: 10%;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -1,5 +1,27 @@
 #loginForm {
-    width: 50%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.form-row {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+label {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#btn-row {
+    justify-content: end;
+}
+
+#loginBtn {
+    margin-right: 20px;
 }
