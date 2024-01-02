@@ -2,3 +2,7 @@
     width: fit-content;
     margin: auto;
 }
+
+.p-card-body {
+    padding: 0px;
+}
