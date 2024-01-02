@@ -1,20 +1,21 @@
 import { Button } from 'primereact/button'; 
 import { InputText } from 'primereact/inputtext';
 import "./LoginForm.css";
+import { Password } from 'primereact/password';
 
 export function LoginForm() {
 
 
     return(
         <div id="loginForm">
-            <form className="login-form">
+            <form>
                 <div className="form-row">
                     <label htmlFor="username">Username</label>
                     <InputText type="text" id="username"></InputText>
                 </div>
                 <div className="form-row">
                     <label htmlFor="password">Password</label>
-                    <InputText type="text" id="password"></InputText>
+                    <Password type="text" id="password"></Password>
                 </div>
                 <div className="form-row" id="btn-row">
                     <Button className="btn" id="loginBtn">Log In</Button>
