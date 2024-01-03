@@ -29,7 +29,7 @@ export function ProfileForm() {
                     <Dropdown id="country">Select country</Dropdown>
                 </div>
                 <div className="form-row">
-                    <label >I am speaking</label>
+                    <label>I am speaking</label>
                     <MultiSelect>Select languages</MultiSelect>
                 </div>
                 <div className="form-row">

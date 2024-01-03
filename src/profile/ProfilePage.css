@@ -1,8 +1,13 @@
 #profilePage {
     width: fit-content;
-    margin: auto;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .p-card-body {
     padding: 0px;
+}
+
+#card .p-card-content {
+    padding: 20px;
 }
