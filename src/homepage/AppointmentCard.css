@@ -1,0 +1,47 @@
+#appointmentCard, .p-card-body, .p-card {
+    width: 300px;
+    height: 300px;
+}
+
+.p-card-content {
+    padding: 0px;
+}
+
+#info p, h3 {
+    font-size: larger;
+    margin: 0px;
+}
+
+#info {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#dateTime {
+    width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-button p-component {
+    text-align: center;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#desc {
+    height: 100px;
+}
