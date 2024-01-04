@@ -23,15 +23,16 @@
     border-radius: 50%;
 }
 
-.p-card-body, .p-card {
+#userCard .p-card-body, 
+#userCard .p-card {
     width: 300px;
     height: 340px;
 }
 
-.p-card-content {
+#userCard .p-card-content {
     padding: 0px;
 }
 
-Button {
+#userCard Button {
     margin-top: 10px;
 }

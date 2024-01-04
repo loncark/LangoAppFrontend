@@ -5,7 +5,7 @@
     justify-content: center;
 }
 
-.form-row {
+#loginForm .form-row {
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -13,13 +13,17 @@
     align-items: center;
 }
 
-label {
+#loginForm label {
     margin-left: 10px;
     margin-right: 10px;
 }
 
 #btn-row {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
     justify-content: end;
+    align-items: center;
 }
 
 #loginBtn {

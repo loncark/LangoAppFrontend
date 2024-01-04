@@ -17,7 +17,7 @@ export function LoginForm() {
                     <label htmlFor="password">Password</label>
                     <Password type="text" id="password"></Password>
                 </div>
-                <div className="form-row" id="btn-row">
+                <div id="btn-row">
                     <Button className="btn" id="loginBtn">Log In</Button>
                     <Button className="btn">Register</Button>
                 </div>
