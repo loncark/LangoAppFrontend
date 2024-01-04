@@ -1,13 +1,15 @@
-#appointmentCard, .p-card-body, .p-card {
+#appointmentCard, 
+#appointmentCard .p-card-body, 
+#appointmentCard .p-card {
     width: 300px;
     height: 300px;
 }
 
-.p-card-content {
+#appointmentCard .p-card-content {
     padding: 0px;
 }
 
-#info p, h3 {
+#info p, #info h3 {
     font-size: larger;
     margin: 0px;
 }
@@ -30,7 +32,7 @@
     align-items: center;
 }
 
-.p-button p-component {
+#info .p-button p-component {
     text-align: center;
 }
 

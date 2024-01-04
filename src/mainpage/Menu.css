@@ -1,0 +1,47 @@
+
+#menu {
+    margin: 0px;
+    margin-right: 50px;
+    padding: 20px;
+    width: 180px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#menuList>h1 {
+    margin-top: 0px;
+    font-size: 40px;
+}
+
+#menuList, #menuList>p {
+    width: 100%;
+    font-size: large;
+}
+
+#menuList>p {
+    padding: 10px;
+    margin: 0px;
+}
+
+#currentUser {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+}
+
+#currentUser>img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+#currentUser>h2 {
+    margin: 10px;
+}
