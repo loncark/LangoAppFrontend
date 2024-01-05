@@ -1,14 +1,21 @@
 Done:
 - set up the React project and git repository
-- did html and css for login, homepage, search, main and profile page and their components
-- cleaned up conflicting css
+- do html and css for login, homepage, search, main and profile page and their components
+- clean up conflicting css
+- route main page and basic login/logout
  
 In progress:
-- route stuff
+- configure login/logout
 
 To do:
 - wire frontend to backend
+- add icons
+- make stuff pretty
 
 - do messages?
 
- 
+
+
+ -- LESSONS LEARNED --
+ 1. Disable cors in SecurityFilterChain on backend and add @CrossOrigin to all controllers 
+ 2. Do not put Buttons inside the <form> tag, otherwise browser blocks the outgoing request

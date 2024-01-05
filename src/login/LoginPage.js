@@ -9,8 +9,8 @@ export function LoginPage(props) {
           <LoginForm 
             setUsername={(e) => props.setUsername(e)} 
             setPassword={(e) => props.setPassword(e)}
-            onAuthenticate={(u, p) => props.onAuthenticate(u, p)}
-            onRegister={(u, p) => props.onRegister(u, p)}
+            onAuthenticate={() => props.onAuthenticate()}
+            onRegister={() => props.onRegister()}
             />
         </div>
     )

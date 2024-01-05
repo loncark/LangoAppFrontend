@@ -9,27 +9,63 @@ export default function App() {
   const [password, setPassword] = useState('');
 
 
-  const authenticate = (username, password) => {
-    console.log("authentication triggered");
-    if(usernamePasswordChecksOut(username, password)) {
-      setLoginIsSuccessful(true);
+  const authenticate = async (username, password) => {
+
+    try {
+      const isAuthenticated = await usernamePasswordChecksOut(username, password);
+  
+      if (isAuthenticated) {
+        setLoginIsSuccessful(true);
+      }
+    } catch (error) {
+      console.error('Caught error in authenticate():', error);
     }
   }
 
-  function usernamePasswordChecksOut() {
-    return true;
+  async function usernamePasswordChecksOut(uname, pword) {
+    const apiUrl = 'http://localhost:7000/auth/login';
+    const requestBody = {
+      username: uname,
+      password: pword
+    };
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        console.error(`Error: ${response.status} - ${response.statusText}`);
+        return false;
+      }
+  
+      const responseData = await response.json();  
+      const accessToken = responseData.accessToken;
+      console.log("accessToken: " + accessToken);
+
+      return true;
+
+    } catch (error) {
+      console.error('Caught error in usernamePasswordChecksOut():', error);
+      return false;
+    }
   }
+  
 
 
   const register = (username, password) => {
     console.log("registration triggered");
     if(registerIsSuccessful(username, password)) {
-      setLoginIsSuccessful(true);
+      setLoginIsSuccessful(false);
     }
   }
 
   function registerIsSuccessful() {
-    return true;
+    return false;
   }
 
 
@@ -46,8 +82,8 @@ export default function App() {
       <LoginPage 
         setUsername={(e) => setUsername(e)} 
         setPassword={(e) => setPassword(e)}
-        onAuthenticate={(u, p) => authenticate(u, p)}
-        onRegister={(u, p) => register(u, p)}
+        onAuthenticate={() => authenticate(username, password)}
+        onRegister={() => register(username, password)}
         />;
   }
 

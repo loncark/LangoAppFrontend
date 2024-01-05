@@ -35,12 +35,11 @@ export function ProfileForm() {
                 <div className="form-row">
                     <label htmlFor="bio">Bio</label>
                     <InputTextarea type="text" id="bio"></InputTextarea>
-                </div>
-                <div id="updateButton">
-                    <Button>Update personal data</Button>
-                </div>
-                
+                </div>        
             </form>
+            <div id="updateButton">
+                    <Button>Update personal data</Button>
+            </div>
         </div>
     )
 }

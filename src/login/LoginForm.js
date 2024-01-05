@@ -11,18 +11,18 @@ export function LoginForm(props) {
                 <div className="form-row">
                     <label htmlFor="username">Username</label>
                     <InputText type="text" id="username" 
-                        onChange={(e) => props.setUsername(e)}></InputText>
+                        onChange={(e) => props.setUsername(e.target.value)}></InputText>
                 </div>
                 <div className="form-row">
                     <label htmlFor="password">Password</label>
                     <Password type="text" id="password" 
-                        onChange={(e) => props.setPassword(e)}></Password>
-                </div>
-                <div id="btn-row">
-                    <Button className="btn" id="loginBtn" onClick={(u, p) => props.onAuthenticate(u, p)}>Log In</Button>
-                    <Button className="btn" onClick={(u, p) => props.onRegister(u, p)}>Register</Button>
+                        onChange={(e) => props.setPassword(e.target.value)}></Password>
                 </div>
             </form>
+            <div id="btn-row">
+                <Button className="btn" id="loginBtn" onClick={() => props.onAuthenticate()}>Log In</Button>
+                <Button className="btn" onClick={() => props.onRegister()}>Register</Button>
+            </div>
         </div>
     )
 }
