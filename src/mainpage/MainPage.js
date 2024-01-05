@@ -5,7 +5,7 @@ import { SearchPage } from '../search/SearchPage';
 import { useState } from 'react';
 import './MainPage.css';
 
-export function MainPage() {
+export function MainPage(props) {
     const [selectedPage, setSelectedPage] = useState('home');
   
     const renderSelectedPage = () => {
@@ -14,8 +14,6 @@ export function MainPage() {
           return <ProfilePage />;
         case 'search':
           return <SearchPage />;
-        case 'logout':
-          return null;
         default:
           return <AppointmentPage/>; 
       }
@@ -23,7 +21,10 @@ export function MainPage() {
   
     return (
       <div id="mainPage">
-        <Menu onSelect={(page) => setSelectedPage(page)} />
+        <Menu 
+          onSelect={(page) => setSelectedPage(page)} 
+          onLogout={() => props.onLogout()}
+          />
         {renderSelectedPage()}
       </div>
     );

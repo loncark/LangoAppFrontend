@@ -1,18 +1,18 @@
 import { Divider } from "primereact/divider";
 import "./Menu.css";
 
-export function Menu({ onSelect }) {
+export function Menu(props) {
   
 
   return (
     <div id="menu">
       <div id="menuList">
         <h1>LanGo</h1>
-        <p onClick={() => onSelect('home')}>Home</p>
-        <p onClick={() => onSelect('search')}>Search</p>
-        <p onClick={() => onSelect('profile')}>Profile</p>
+        <p onClick={() => props.onSelect('home')}>Home</p>
+        <p onClick={() => props.onSelect('search')}>Search</p>
+        <p onClick={() => props.onSelect('profile')}>Profile</p>
         <Divider />
-        <p onClick={() => onSelect('logout')}>Log out</p>
+        <p onClick={() => props.onLogout()}>Log out</p>
       </div>
 
       <div id="currentUser">
