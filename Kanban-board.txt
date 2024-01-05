@@ -1,16 +1,14 @@
 Done:
 - set up the React project and git repository
-
+- did html and css for login, homepage, search, main and profile page and their components
+- cleaned up conflicting css
+ 
 In progress:
-- figure out how to structure project and route stuff
+- route stuff
 
 To do:
-- write login page
-- make it pretty
 - wire frontend to backend
 
-- write main page
-- write profile page
 - do messages?
 
  

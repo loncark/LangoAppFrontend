@@ -1,16 +1,21 @@
 import { Divider } from "primereact/divider";
 import "./Menu.css";
 
-export function Menu() {
+export function Menu({ onSelect }) {
+
+  const handleMenuClick = (page) => {
+    onSelect(page);
+  };
+
   return (
     <div id="menu">
       <div id="menuList">
         <h1>LanGo</h1>
-        <p>Home</p>
-        <p>Search</p>
-        <p>Profile</p>
+        <p onClick={() => handleMenuClick('home')}>Home</p>
+        <p onClick={() => handleMenuClick('search')}>Search</p>
+        <p onClick={() => handleMenuClick('profile')}>Profile</p>
         <Divider />
-        <p>Log out</p>
+        <p onClick={() => handleMenuClick('logout')}>Log out</p>
       </div>
 
       <div id="currentUser">
