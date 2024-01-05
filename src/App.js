@@ -39,7 +39,7 @@ export default function App() {
       });
 
       if (!response.ok) {
-        console.error(`Error: ${response.status} - ${response.statusText}`);
+        console.error(`Login Error: ${response.status} - ${response.statusText}`);
         return false;
       }
   
@@ -55,19 +55,41 @@ export default function App() {
     }
   }
   
-
-
   const register = (username, password) => {
-    console.log("registration triggered");
     if(registerIsSuccessful(username, password)) {
-      setLoginIsSuccessful(false);
+      setLoginIsSuccessful(true);
     }
   }
 
-  function registerIsSuccessful() {
-    return false;
-  }
+  async function registerIsSuccessful(uname, pword) {
+    const apiUrl = 'http://localhost:7000/users';
+    const requestBody = {
+      name: uname,
+      password: pword
+    };
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
 
+      if (!response.ok) {
+        console.error(`Register Error: ${response.status} - ${response.statusText}`);
+        return false;
+      }
+
+      console.log("Register success");
+      return true;
+
+    } catch (error) {
+      console.error('Caught error in registerIsSuccessful():', error);
+      return false;
+    }
+  }
 
   const renderPage = () => {
     
