@@ -1,8 +1,15 @@
 import { Divider } from "primereact/divider";
+import { useStore } from '../state/Store';
 import "./Menu.css";
 
 export function Menu(props) {
-  
+  const { setUsername, setPassword, setLoginIsSuccessful } = useStore();
+
+  const logout = () => {
+    setUsername('');
+    setPassword('');
+    setLoginIsSuccessful(false);
+  }
 
   return (
     <div id="menu">
@@ -12,7 +19,7 @@ export function Menu(props) {
         <p onClick={() => props.onSelect('search')}>Search</p>
         <p onClick={() => props.onSelect('profile')}>Profile</p>
         <Divider />
-        <p onClick={() => props.onLogout()}>Log out</p>
+        <p onClick={() => logout()}>Log out</p>
       </div>
 
       <div id="currentUser">

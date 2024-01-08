@@ -1,3 +1,4 @@
+
 export const authenticate = async (username, password, setLoginIsSuccessful) => {
   try {
     const isAuthenticated = await usernamePasswordChecksOut(username, password);

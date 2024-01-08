@@ -5,7 +5,7 @@ import { SearchPage } from '../search/SearchPage';
 import { useState } from 'react';
 import './MainPage.css';
 
-export function MainPage(props) {
+export function MainPage() {
     const [selectedPage, setSelectedPage] = useState('home');
   
     const renderSelectedPage = () => {
@@ -23,8 +23,7 @@ export function MainPage(props) {
       <div id="mainPage">
         <Menu 
           onSelect={(page) => setSelectedPage(page)} 
-          onLogout={() => props.onLogout()}
-          />
+        />
         {renderSelectedPage()}
       </div>
     );
