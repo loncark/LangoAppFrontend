@@ -4,6 +4,7 @@ Done:
 - clean up conflicting css
 - route main page and basic login/logout
 - configure login/logout
+- implemented Zustand for login state management
 
 In progress:
 - fetch logged user data from login and update the app accordingly
@@ -12,6 +13,7 @@ To do:
 - wire frontend to backend
 - add icons
 - make stuff pretty
+- register needs to return accessToken?
 
 - do messages?
 

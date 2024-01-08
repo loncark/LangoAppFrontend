@@ -6,7 +6,7 @@ import { authenticate, register } from '../../service/AuthenticationService';
 import { useStore } from '../../state/Store';
 
 export function LoginForm() {
-    const { setUsername, setPassword, username, password, setLoginIsSuccessful } = useStore();
+    const { setUsername, setPassword, username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser } = useStore();
 
     return(
         <div id="loginForm">
@@ -23,8 +23,10 @@ export function LoginForm() {
                 </div>
             </form>
             <div id="btn-row">
-                <Button className="btn" id="loginBtn" onClick={() => authenticate(username, password, (e) => setLoginIsSuccessful(e))}>Log In</Button>
-                <Button className="btn" onClick={() => register(username, password, (e) => setLoginIsSuccessful(e))}>Register</Button>
+                <Button className="btn" id="loginBtn" 
+                    onClick={() => authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e), (e) => setCurrentUser(e))}>Log In</Button>
+                <Button className="btn" 
+                    onClick={() => register(username, password, (e) => setLoginIsSuccessful(e))}>Register</Button>
             </div>
         </div>
     )

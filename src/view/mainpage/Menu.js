@@ -1,15 +1,16 @@
+import "./Menu.css";
 import { Divider } from "primereact/divider";
 import { useStore } from '../../state/Store';
-import "./Menu.css";
 
 export function Menu(props) {
-  const { setUsername, setPassword, setLoginIsSuccessful } = useStore();
+  const { setUsername, setPassword, setLoginIsSuccessful, currentUser} = useStore();
 
   const logout = () => {
     setUsername('');
     setPassword('');
     setLoginIsSuccessful(false);
   }
+  
 
   return (
     <div id="menu">
@@ -24,7 +25,7 @@ export function Menu(props) {
 
       <div id="currentUser">
         <img src={process.env.PUBLIC_URL + "/assets/person.png"} alt="img" />
-        <h2>Max</h2>
+        <h2>{currentUser.name}</h2>
       </div>
     </div>
   );

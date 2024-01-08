@@ -1,10 +1,15 @@
+import { getUserByName } from "./BackendService";
 
-export const authenticate = async (username, password, setLoginIsSuccessful) => {
+export const authenticate = async (username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser) => {
   try {
-    const isAuthenticated = await usernamePasswordChecksOut(username, password);
+    const accessToken = await usernamePasswordChecksOut(username, password);
 
-    if (isAuthenticated) {
+    if (accessToken) {
       setLoginIsSuccessful(true);
+      setAccessToken(accessToken);
+
+      let user = await getUserByName(username, accessToken);
+      setCurrentUser(user);
     }
   } catch (error) {
     console.error("Caught error in authenticate():", error);
@@ -36,7 +41,8 @@ async function usernamePasswordChecksOut(uname, pword) {
     const accessToken = responseData.accessToken;
     console.log("accessToken: " + accessToken);
 
-    return true;
+    return accessToken;
+
   } catch (error) {
     console.error("Caught error in usernamePasswordChecksOut():", error);
     return false;
