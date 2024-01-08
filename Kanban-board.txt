@@ -3,9 +3,10 @@ Done:
 - do html and css for login, homepage, search, main and profile page and their components
 - clean up conflicting css
 - route main page and basic login/logout
- 
-In progress:
 - configure login/logout
+
+In progress:
+- fetch logged user data from login and update the app accordingly
 
 To do:
 - wire frontend to backend
