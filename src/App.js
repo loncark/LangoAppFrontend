@@ -1,6 +1,6 @@
 import 'primereact/resources/themes/bootstrap4-dark-blue/theme.css';
-import { LoginPage } from './login/LoginPage';
-import { MainPage } from './mainpage/MainPage';
+import { LoginPage } from './view/login/LoginPage';
+import { MainPage } from './view/mainpage/MainPage';
 import { useStore } from './state/Store';
 
 

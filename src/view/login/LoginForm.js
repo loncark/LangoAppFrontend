@@ -2,8 +2,8 @@ import "./LoginForm.css";
 import { Button } from 'primereact/button'; 
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
-import { authenticate, register } from '../service/AuthenticationService';
-import { useStore } from '../state/Store';
+import { authenticate, register } from '../../service/AuthenticationService';
+import { useStore } from '../../state/Store';
 
 export function LoginForm() {
     const { setUsername, setPassword, username, password, setLoginIsSuccessful } = useStore();

@@ -1,4 +1,4 @@
-import { Menu } from '../mainpage/Menu';
+import { Menu } from './Menu';
 import { AppointmentPage } from '../appointments/AppointmentPage';
 import { ProfilePage } from '../profile/ProfilePage';
 import { SearchPage } from '../search/SearchPage';

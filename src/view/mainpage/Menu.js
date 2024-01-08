@@ -1,5 +1,5 @@
 import { Divider } from "primereact/divider";
-import { useStore } from '../state/Store';
+import { useStore } from '../../state/Store';
 import "./Menu.css";
 
 export function Menu(props) {
