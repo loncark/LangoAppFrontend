@@ -19,7 +19,7 @@ export function LoginForm() {
                 <div className="form-row">
                     <label htmlFor="password">Password</label>
                     <Password type="text" id="password" 
-                        onChange={(e) => setPassword(e.target.value)}></Password>
+                        onChange={(e) => setPassword(e.target.value)} feedback={false}></Password>
                 </div>
             </form>
             <div id="btn-row">

@@ -5,18 +5,25 @@ export function getUserByName (username, accessToken) {
     return sendRequestToBackend(apiUrl, "GET", accessToken)
 }
 
-export async function sendRequestToBackend(apiUrl, method, accessToken) {
+export function updateUserData(updatedUser, accessToken) {
+    const apiUrl = "http://localhost:7000/users";
+
+    return sendRequestToBackend(apiUrl, "PUT", accessToken, updatedUser);
+}
+
+export async function sendRequestToBackend(apiUrl, method, accessToken, requestBody) {
     try {
         const response = await fetch(apiUrl, {
           method: method,
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + accessToken
-          }
+          },
+          body: JSON.stringify(requestBody),
         });
     
         if (!response.ok) {
-          console.error(`Login Error: ${response.status} - ${response.statusText}`);
+          console.error(`${method} Error: ${response.status} - ${response.statusText}`);
           return false;
         }
     
@@ -26,7 +33,7 @@ export async function sendRequestToBackend(apiUrl, method, accessToken) {
         return responseData;
     
       } catch (error) {
-        console.error("Caught error in getUserByName():", error);
+        console.error("Caught error in sendRequestToBackend(): ", error);
         return false;
       }
 }
