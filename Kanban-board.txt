@@ -5,15 +5,17 @@ Done:
 - route main page and basic login/logout
 - configure login/logout
 - implemented Zustand for login state management
+- fetch logged user data from login and update the menu accordingly
+- register returns accessToken
+
 
 In progress:
-- fetch logged user data from login and update the app accordingly
+- get the profile page to display data and call the PUT method on submit
 
 To do:
 - wire frontend to backend
 - add icons
 - make stuff pretty
-- register needs to return accessToken?
 
 - do messages?
 
