@@ -49,9 +49,16 @@ async function usernamePasswordChecksOut(uname, pword) {
   }
 }
 
-export const register = (username, password, setLoginIsSuccessful) => {
-  if (registerIsSuccessful(username, password)) {
-    setLoginIsSuccessful(true);
+export const register = async (username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser) => {
+  try {
+
+    const success = await registerIsSuccessful(username, password);
+    if (success) {
+      authenticate(username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser);
+    }
+
+  } catch (error) {
+    console.error("Caught error in register():", error);
   }
 };
 
@@ -59,7 +66,7 @@ async function registerIsSuccessful(uname, pword) {
   const apiUrl = "http://localhost:7000/users";
   const requestBody = {
     name: uname,
-    password: pword,
+    password: pword, 
   };
 
   try {
@@ -80,6 +87,7 @@ async function registerIsSuccessful(uname, pword) {
 
     console.log("Register success");
     return true;
+
   } catch (error) {
     console.error("Caught error in registerIsSuccessful():", error);
     return false;

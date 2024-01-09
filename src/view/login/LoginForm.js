@@ -26,7 +26,7 @@ export function LoginForm() {
                 <Button className="btn" id="loginBtn" 
                     onClick={() => authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e), (e) => setCurrentUser(e))}>Log In</Button>
                 <Button className="btn" 
-                    onClick={() => register(username, password, (e) => setLoginIsSuccessful(e))}>Register</Button>
+                    onClick={() => register(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e), (e) => setCurrentUser(e))}>Register</Button>
             </div>
         </div>
     )
