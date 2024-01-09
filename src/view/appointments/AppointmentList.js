@@ -13,9 +13,11 @@ export function AppointmentList() {
         { id: 7, title: 'Appointment 1' },
       ];
 
+      let i=0;
+
     return (
         <div id="appointmentList">
-            {appointmentsData.map(() => (<AppointmentCard/>))}
+            {appointmentsData.map(() => (<AppointmentCard key={i++}/>))}
         </div>
     )
 }

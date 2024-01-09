@@ -13,17 +13,19 @@ import './ProfileForm.css';
 export function ProfileForm() { 
     const { currentUser, setCurrentUser, accessToken } = useStore();
    
-    const countries = ['UK', 'USA', 'Croatia', 'Germany', 'Russia', 'India', 'Spain', 'Italy', 'France', 'Canada', 'Japan'];
+    const countries = ['UK', 'USA', 'CROATIA', 'GERMANY', 'RUSSIA', 'INDIA', 'SPAIN', 'ITALY', 'FRANCE', 'CANADA', 'JAPAN'];
     const countryObjects = countries.map(countryName => ({ name: countryName }));
+    // mapping has to exist due to the nature of primereact Dropdown
 
-    const languages = ['English', 'German', 'Italian', 'Croatian', 'Spanish', 'Hindi', 'French', 'Russian', 'Japanese'];
+    const languages = ['ENGLISH', 'GERMAN', 'ITALIAN', 'CROATIAN', 'SPANISH', 'HINDI', 'FRENCH', 'RUSSIAN', 'JAPANESE'];
     const languageObjects = languages.map(language => ({ name: language }));
 
     const [newUsername, setNewUsername] = useState(currentUser.name);
     const [newPassword, setNewPassword] = useState('');
-    const [newCountry, setNewCountry] = useState(currentUser.country? currentUser.country : '');
-    const [newLanguages, setNewLanguages] = useState(currentUser.languages? currentUser.languages.split(',').map(language => language.trim()) : '');
+    const [newCountry, setNewCountry] = useState(currentUser.country? { name: currentUser.country } : { name: '' });
+    const [newLanguages, setNewLanguages] = useState(currentUser.languages? currentUser.languages.split(',').map(language => ({name: language.trim()})) : '');
     const [newBio, setNewBio] = useState(currentUser.bio? currentUser.bio : '');
+
 
     const updateUserInfo = async () => {
         const langString = newLanguages.map(language => language.toUpperCase()).join(','); 
