@@ -10,6 +10,7 @@ import { updateUserData } from '../../service/BackendService';
 import './ProfileForm.css';
 
 
+
 export function ProfileForm() { 
     const { currentUser, setCurrentUser, accessToken } = useStore();
    
