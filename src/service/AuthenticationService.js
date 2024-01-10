@@ -2,6 +2,7 @@ import { getUserByName } from "./BackendService";
 
 export const authenticate = async (username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser) => {
   try {
+    console.log("Entered auth with username " + username + " and password " + password);
     const accessToken = await usernamePasswordChecksOut(username, password);
 
     if (accessToken) {
@@ -10,6 +11,8 @@ export const authenticate = async (username, password, setLoginIsSuccessful, set
 
       let user = await getUserByName(username, accessToken);
       setCurrentUser(user);
+
+      console.log("User after auth: ", user)
     }
   } catch (error) {
     console.error("Caught error in authenticate():", error);

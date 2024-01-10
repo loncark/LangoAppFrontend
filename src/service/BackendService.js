@@ -1,11 +1,11 @@
 
-export function getUserByName (username, accessToken) {
+export async function getUserByName (username, accessToken) {
     const apiUrl = "http://localhost:7000/users?name=" + username;
 
     return sendRequestToBackend(apiUrl, "GET", accessToken)
 }
 
-export function updateUserData(updatedUser, accessToken) {
+export async function updateUserData(updatedUser, accessToken) {
     const apiUrl = "http://localhost:7000/users";
 
     return sendRequestToBackend(apiUrl, "PUT", accessToken, updatedUser);
@@ -28,7 +28,6 @@ export async function sendRequestToBackend(apiUrl, method, accessToken, requestB
         }
     
         const responseData = await response.json();
-        console.log(responseData);
     
         return responseData;
     

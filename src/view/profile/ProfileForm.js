@@ -5,14 +5,14 @@ import { Dropdown } from 'primereact/dropdown';
 import { MultiSelect } from 'primereact/multiselect';
 import { Password } from 'primereact/password';
 import { useStore } from '../../state/Store';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { updateUserData } from '../../service/BackendService';
+import { authenticate } from '../../service/AuthenticationService';
 import './ProfileForm.css';
 
 
-
 export function ProfileForm() { 
-    const { currentUser, setCurrentUser, accessToken } = useStore();
+    const { currentUser, setCurrentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful } = useStore();
    
     const countries = ['UK', 'USA', 'CROATIA', 'GERMANY', 'RUSSIA', 'INDIA', 'SPAIN', 'ITALY', 'FRANCE', 'CANADA', 'JAPAN'];
     const countryObjects = countries.map(countryName => ({ name: countryName }));
@@ -22,29 +22,39 @@ export function ProfileForm() {
     const languageObjects = languages.map(language => ({ name: language }));
 
     const [newUsername, setNewUsername] = useState(currentUser.name);
-    const [newPassword, setNewPassword] = useState('');
+    const [newPassword, setNewPassword] = useState(password);
     const [newCountry, setNewCountry] = useState(currentUser.country? { name: currentUser.country } : { name: '' });
     const [newLanguages, setNewLanguages] = useState(currentUser.languages? currentUser.languages.split(',').map(language => ({name: language.trim()})) : '');
-    const [newBio, setNewBio] = useState(currentUser.bio? currentUser.bio : '');
+    const [newBio, setNewBio] = useState('');
+
+    useEffect(() => {
+        // unfortunately runs unnecessarily two times each time you click on profile...
+        authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e), (e) => setCurrentUser(e));
+      }, [username, password]);
 
 
-    const updateUserInfo = async () => {
-        const langString = newLanguages.map(language => language.toUpperCase()).join(','); 
+    async function updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages) {
+        const langString = newLanguages.map(languageObject => languageObject.name).join(',');
 
-        setCurrentUser({
+        let updatedUser = {
             id: currentUser.id,
             name: newUsername,
-            ...(newPassword !== '' && { password: newPassword }),
-            country: newCountry,
-            bio: newBio,
+            password: newPassword,
+            country: newCountry.name,
+            bio: (newBio === ''? currentUser.bio : newBio),
             languages: langString
-        });
+        };
 
-        let updatedUser = await updateUserData(currentUser, accessToken);
-        setCurrentUser(updatedUser);
+        try {        
+            await updateUserData(updatedUser, accessToken);
 
-        // state of the password: (en)crypted?
-        //authenticate(currentUser.username, currentUser.password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e), (e) => setCurrentUser(e))
+            setUsername(updatedUser.name);
+            setPassword(updatedUser.password);
+
+        } catch (error) {
+            console.error("Caught error in updateUserInfo(): ", error);
+            return false;
+        }
     }
 
     return (
@@ -80,12 +90,12 @@ export function ProfileForm() {
                 </div>
                 <div className="form-row">
                     <label htmlFor="bio">Bio</label>
-                    <InputTextarea type="text" id="bio" placeholder='Describe yourself in a sentence.'
+                    <InputTextarea type="text" id="bio" placeholder='Insert new description'
                         value={newBio} onChange={(e) => setNewBio(e.target.value)}></InputTextarea>
                 </div>       
             </form>
             <div id="updateButton">
-                    <Button>Update personal data</Button>
+                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)}>Update personal data</Button>
             </div>
         </div>
     )
