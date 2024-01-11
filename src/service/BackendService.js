@@ -11,6 +11,12 @@ export async function updateUserData(updatedUser, accessToken) {
     return sendRequestToBackend(apiUrl, "PUT", accessToken, updatedUser);
 }
 
+export async function getAppointmentsByUserId(id, accessToken) {
+    const apiUrl = "http://localhost:7000/appointments?userId=" + id;
+
+    return sendRequestToBackend(apiUrl, "GET", accessToken);
+}
+
 export async function sendRequestToBackend(apiUrl, method, accessToken, requestBody) {
     try {
         const response = await fetch(apiUrl, {
@@ -28,7 +34,7 @@ export async function sendRequestToBackend(apiUrl, method, accessToken, requestB
         }
     
         const responseData = await response.json();
-    
+console.log("responseData: " + responseData);
         return responseData;
     
       } catch (error) {

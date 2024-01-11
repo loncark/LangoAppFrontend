@@ -7,10 +7,12 @@ Done:
 - implemented Zustand for login state management
 - fetch logged user data from login and update the menu accordingly
 - register returns accessToken
-
+- get the profile page to display data and call the PUT method on submit
+- display all appointments 
+- refactor initialization of all lists to main page useEffect
 
 In progress:
-- get the profile page to display data and call the PUT method on submit
+- write a backend function to fetch user names for a list of user ids
 
 To do:
 - wire frontend to backend
@@ -25,3 +27,4 @@ To do:
  1. Disable cors in SecurityFilterChain on backend and add @CrossOrigin to all controllers 
  2. Do not put Buttons inside the <form> tag, otherwise browser blocks the outgoing request
  3. Import useStore from Store.js not from Zustand for the second time
+ 4. Use useEffect() instead of relying on synchronicity of operations

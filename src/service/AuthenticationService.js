@@ -1,6 +1,5 @@
-import { getUserByName } from "./BackendService";
 
-export const authenticate = async (username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser) => {
+export const authenticate = async (username, password, setLoginIsSuccessful, setAccessToken) => {
   try {
     console.log("Entered auth with username " + username + " and password " + password);
     const accessToken = await usernamePasswordChecksOut(username, password);
@@ -9,10 +8,6 @@ export const authenticate = async (username, password, setLoginIsSuccessful, set
       setLoginIsSuccessful(true);
       setAccessToken(accessToken);
 
-      let user = await getUserByName(username, accessToken);
-      setCurrentUser(user);
-
-      console.log("User after auth: ", user)
     }
   } catch (error) {
     console.error("Caught error in authenticate():", error);
@@ -52,12 +47,12 @@ async function usernamePasswordChecksOut(uname, pword) {
   }
 }
 
-export const register = async (username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser) => {
+export const register = async (username, password, setLoginIsSuccessful, setAccessToken) => {
   try {
 
     const success = await registerIsSuccessful(username, password);
     if (success) {
-      authenticate(username, password, setLoginIsSuccessful, setAccessToken, setCurrentUser);
+      authenticate(username, password, setLoginIsSuccessful, setAccessToken);
     }
 
   } catch (error) {

@@ -24,7 +24,13 @@ export const createCurrentUserSlice = (set) => ({
     setCurrentUser: (updatedUser) => set((state) => ({ currentUser: { ...state.currentUser, ...updatedUser } })),
 })
 
+export const createCurrentUserAppointmentsSlice = (set) => ({
+    	appointments: [],
+      setAppointments: (value) => set({ appointments: value }),
+})
+
 export const useStore = create((...a) => ({
   ...createLoginSlice(...a),
   ...createCurrentUserSlice(...a),
+  ...createCurrentUserAppointmentsSlice(...a),
 }))

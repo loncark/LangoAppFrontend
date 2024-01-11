@@ -3,12 +3,13 @@ import { Divider } from "primereact/divider";
 import { useStore } from '../../state/Store';
 
 export function Menu(props) {
-  const { setUsername, setPassword, setLoginIsSuccessful, currentUser} = useStore();
+  const { setUsername, setPassword, setLoginIsSuccessful, setAccessToken, currentUser} = useStore();
 
   const logout = () => {
     setUsername('');
     setPassword('');
     setLoginIsSuccessful(false);
+    setAccessToken('');
   }
   
 

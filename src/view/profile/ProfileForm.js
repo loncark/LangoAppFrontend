@@ -12,7 +12,7 @@ import './ProfileForm.css';
 
 
 export function ProfileForm() { 
-    const { currentUser, setCurrentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful } = useStore();
+    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful } = useStore();
    
     const countries = ['UK', 'USA', 'CROATIA', 'GERMANY', 'RUSSIA', 'INDIA', 'SPAIN', 'ITALY', 'FRANCE', 'CANADA', 'JAPAN'];
     const countryObjects = countries.map(countryName => ({ name: countryName }));
@@ -28,9 +28,14 @@ export function ProfileForm() {
     const [newBio, setNewBio] = useState('');
 
     useEffect(() => {
-        // unfortunately runs unnecessarily two times each time you click on profile...
-        authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e), (e) => setCurrentUser(e));
-      }, [username, password]);
+        authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [username]);
+
+    useEffect(() => {
+        authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [password]);
 
 
     async function updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages) {
