@@ -5,12 +5,12 @@ import { SearchPage } from "../search/SearchPage";
 import { useEffect, useState } from "react";
 import "./MainPage.css";
 import { useStore } from "../../state/Store";
-import { getAppointmentsByUserId, getUserByName } from "../../service/BackendService";
+import { getAppointmentsByUserId, getUserByName, getUsersInAppointments } from "../../service/BackendService";
 
 
 export function MainPage() {
   const [selectedPage, setSelectedPage] = useState("home");
-  const { username, setAppointments, currentUser, setCurrentUser, accessToken, loginIsSuccessful } = useStore();
+  const { username, appointments, setAppointments, setUsersInAppointments, currentUser, setCurrentUser, accessToken, loginIsSuccessful } = useStore();
 
 
   async function initCurrentUser() {
@@ -29,6 +29,19 @@ export function MainPage() {
     }
   }
 
+  async function fetchUsersinAppointments(accessToken) {
+    const idList = appointments.map(apt => (apt.userId1 === currentUser.id? apt.userId2 : apt.userId1));
+    
+    try {
+      const users = await getUsersInAppointments(idList, accessToken);
+      setUsersInAppointments(users);
+    
+    } catch (error) {
+      console.error("Caught error in fetchUsersInAppointments(): ", error);
+      return false;
+    }
+  }
+
 
   useEffect(() => {
     initCurrentUser();
@@ -41,6 +54,13 @@ export function MainPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.id]);
+
+  useEffect(() => {
+    if (appointments.length !== 0) {
+      fetchUsersinAppointments(accessToken);
+    } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appointments])
 
   
 

@@ -17,6 +17,12 @@ export async function getAppointmentsByUserId(id, accessToken) {
     return sendRequestToBackend(apiUrl, "GET", accessToken);
 }
 
+export async function getUsersInAppointments(idList, accessToken) {
+    const apiUrl = "http://localhost:7000/users/idList";
+
+    return sendRequestToBackend(apiUrl, "POST", accessToken, idList);
+}
+
 export async function sendRequestToBackend(apiUrl, method, accessToken, requestBody) {
     try {
         const response = await fetch(apiUrl, {
@@ -34,7 +40,8 @@ export async function sendRequestToBackend(apiUrl, method, accessToken, requestB
         }
     
         const responseData = await response.json();
-console.log("responseData: " + responseData);
+        console.log("responseData: " + responseData);
+
         return responseData;
     
       } catch (error) {

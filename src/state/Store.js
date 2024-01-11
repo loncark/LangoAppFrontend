@@ -27,6 +27,8 @@ export const createCurrentUserSlice = (set) => ({
 export const createCurrentUserAppointmentsSlice = (set) => ({
     	appointments: [],
       setAppointments: (value) => set({ appointments: value }),
+      usersInAppointments: [],
+      setUsersInAppointments: (value) => set({ usersInAppointments: value }),
 })
 
 export const useStore = create((...a) => ({
