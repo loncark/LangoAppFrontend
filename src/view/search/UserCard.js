@@ -32,10 +32,12 @@ export function UserCard(props) {
                     </div>
                 </div>
                 <Divider/>
-                <p>{ generateLanguageSentence(props.user.languages) }</p>
-                <p>{ props.user.bio }</p>
+                <div id="desc">
+                    <p>{ generateLanguageSentence(props.user.languages) }</p>
+                    <p>{ props.user.bio }</p>
+                </div>
                 <Button>Book an appointment with me</Button>
-
+                
             </Card>
         </div>
     )
