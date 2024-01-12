@@ -32,7 +32,7 @@ export function UserCard(props) {
                     </div>
                 </div>
                 <Divider/>
-                <div id="desc">
+                <div id="description">
                     <p>{ generateLanguageSentence(props.user.languages) }</p>
                     <p>{ props.user.bio }</p>
                 </div>
