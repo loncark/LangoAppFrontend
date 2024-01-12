@@ -33,7 +33,15 @@ export const createCurrentUserAppointmentsSlice = (set) => ({
 
 export const createOtherUsersSlice = (set) => ({
       otherUsers: [],
-      setOtherUsers: (value) => set({ otherUsers: (Array.isArray(value)? value : [value] )}),
+      setOtherUsers: (value) => {
+        if (value === null) {
+          set({ otherUsers: []});
+        } else if (!Array.isArray(value)) {
+          set({ otherUsers: [value] });
+        } else {
+          set({ otherUsers: value });
+        }
+      },
 })
 
 export const createGeneralDataSlice = (set) => ({

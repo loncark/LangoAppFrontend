@@ -13,11 +13,11 @@ Done:
 - write a backend function to fetch user names for a list of user ids
 - configure names in appointments to show properly
 - fetch all users for search screen and list them
-
-
-In progress:
 - search by language
 - search by name
+
+In progress:
+- fix backend getbylanguage to return optional
 
 To do:
 - add icons

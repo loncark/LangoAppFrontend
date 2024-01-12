@@ -1,6 +1,6 @@
 
 export async function getUserByName (username, accessToken) {
-    const apiUrl = "http://localhost:7000/users?name=" + username;
+    const apiUrl = (username? "http://localhost:7000/users?name=" + username : "http://localhost:7000/users");
 
     return sendRequestToBackend(apiUrl, "GET", accessToken)
 }
