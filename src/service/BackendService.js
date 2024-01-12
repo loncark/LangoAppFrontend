@@ -24,7 +24,7 @@ export async function getUsersInAppointments(idList, accessToken) {
 }
 
 export async function getUsersSpeakingLanguage(language, accessToken) {
-    const apiUrl = "http://localhost:7000/users?language=" + language
+    const apiUrl = (language? "http://localhost:7000/users?language=" + language : "http://localhost:7000/users");
     
     return sendRequestToBackend(apiUrl, "GET", accessToken);
 }

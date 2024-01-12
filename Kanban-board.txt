@@ -12,9 +12,10 @@ Done:
 - refactor initialization of all lists to main page useEffect
 - write a backend function to fetch user names for a list of user ids
 - configure names in appointments to show properly
+- fetch all users for search screen and list them
+
 
 In progress:
-- fetch all users for search screen and list them
 - search by language
 - search by name
 

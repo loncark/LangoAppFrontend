@@ -12,13 +12,11 @@ import './ProfileForm.css';
 
 
 export function ProfileForm() { 
-    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful } = useStore();
+    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful, countries, languages } = useStore();
    
-    const countries = ['UK', 'USA', 'CROATIA', 'GERMANY', 'RUSSIA', 'INDIA', 'SPAIN', 'ITALY', 'FRANCE', 'CANADA', 'JAPAN'];
     const countryObjects = countries.map(countryName => ({ name: countryName }));
     // mapping has to exist due to the nature of primereact Dropdown
 
-    const languages = ['ENGLISH', 'GERMAN', 'ITALIAN', 'CROATIAN', 'SPANISH', 'HINDI', 'FRENCH', 'RUSSIAN', 'JAPANESE'];
     const languageObjects = languages.map(language => ({ name: language }));
 
     const [newUsername, setNewUsername] = useState(currentUser.name);

@@ -5,9 +5,10 @@ import './UserList.css';
 export function UserList() {
     const { otherUsers } = useStore();
 
+
     return (
         <div id="userList">
-            {otherUsers.map((user) => (<UserCard key={user.id} user={user}/>))}
+            {otherUsers.length? otherUsers.map((user) => (<UserCard key={user.id} user={user}/>)) : <p>No users found.</p>}
         </div>
     )
 }

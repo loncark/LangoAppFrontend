@@ -33,7 +33,12 @@ export const createCurrentUserAppointmentsSlice = (set) => ({
 
 export const createOtherUsersSlice = (set) => ({
       otherUsers: [],
-      setOtherUsers: (value) => set({ otherUsers: value }),
+      setOtherUsers: (value) => set({ otherUsers: (Array.isArray(value)? value : [value] )}),
+})
+
+export const createGeneralDataSlice = (set) => ({
+      countries: ['UK', 'USA', 'CROATIA', 'GERMANY', 'RUSSIA', 'INDIA', 'SPAIN', 'ITALY', 'FRANCE', 'CANADA', 'JAPAN'],
+      languages: ['ENGLISH', 'GERMAN', 'ITALIAN', 'CROATIAN', 'SPANISH', 'HINDI', 'FRENCH', 'RUSSIAN', 'JAPANESE']
 })
 
 export const useStore = create((...a) => ({
@@ -41,4 +46,5 @@ export const useStore = create((...a) => ({
   ...createCurrentUserSlice(...a),
   ...createCurrentUserAppointmentsSlice(...a),
   ...createOtherUsersSlice(...a),
+  ...createGeneralDataSlice(...a),
 }))
