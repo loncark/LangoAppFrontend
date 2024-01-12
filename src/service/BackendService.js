@@ -23,6 +23,18 @@ export async function getUsersInAppointments(idList, accessToken) {
     return sendRequestToBackend(apiUrl, "POST", accessToken, idList);
 }
 
+export async function getUsersSpeakingLanguage(language, accessToken) {
+    const apiUrl = "http://localhost:7000/users?language=" + language
+    
+    return sendRequestToBackend(apiUrl, "GET", accessToken);
+}
+
+export async function getAllUsers(accessToken) {
+    const apiUrl = "http://localhost:7000/users";
+
+    return sendRequestToBackend(apiUrl, "GET", accessToken);
+}
+
 export async function sendRequestToBackend(apiUrl, method, accessToken, requestBody) {
     try {
         const response = await fetch(apiUrl, {

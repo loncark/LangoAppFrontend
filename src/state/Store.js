@@ -31,8 +31,14 @@ export const createCurrentUserAppointmentsSlice = (set) => ({
       setUsersInAppointments: (value) => set({ usersInAppointments: value }),
 })
 
+export const createOtherUsersSlice = (set) => ({
+      otherUsers: [],
+      setOtherUsers: (value) => set({ otherUsers: value }),
+})
+
 export const useStore = create((...a) => ({
   ...createLoginSlice(...a),
   ...createCurrentUserSlice(...a),
   ...createCurrentUserAppointmentsSlice(...a),
+  ...createOtherUsersSlice(...a),
 }))

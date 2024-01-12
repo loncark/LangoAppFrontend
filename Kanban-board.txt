@@ -10,12 +10,15 @@ Done:
 - get the profile page to display data and call the PUT method on submit
 - display all appointments 
 - refactor initialization of all lists to main page useEffect
+- write a backend function to fetch user names for a list of user ids
+- configure names in appointments to show properly
 
 In progress:
-- write a backend function to fetch user names for a list of user ids
+- fetch all users for search screen and list them
+- search by language
+- search by name
 
 To do:
-- wire frontend to backend
 - add icons
 - make stuff pretty
 

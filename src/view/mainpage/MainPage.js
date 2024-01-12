@@ -5,12 +5,12 @@ import { SearchPage } from "../search/SearchPage";
 import { useEffect, useState } from "react";
 import "./MainPage.css";
 import { useStore } from "../../state/Store";
-import { getAppointmentsByUserId, getUserByName, getUsersInAppointments } from "../../service/BackendService";
+import { getAppointmentsByUserId, getUserByName, getUsersInAppointments, getAllUsers } from "../../service/BackendService";
 
 
 export function MainPage() {
   const [selectedPage, setSelectedPage] = useState("home");
-  const { username, appointments, setAppointments, setUsersInAppointments, currentUser, setCurrentUser, accessToken, loginIsSuccessful } = useStore();
+  const { username, appointments, setAppointments, setUsersInAppointments, currentUser, setCurrentUser, accessToken, loginIsSuccessful, setOtherUsers } = useStore();
 
 
   async function initCurrentUser() {
@@ -42,6 +42,19 @@ export function MainPage() {
     }
   }
 
+  async function fetchAllOtherUsers(accessToken) {
+    try {
+      const allUsers = await getAllUsers(accessToken);
+      const otherUsers = allUsers.filter(user => user.id !== currentUser.id);
+      
+      setOtherUsers(otherUsers);
+
+    } catch (error) {
+        console.error("Caught error in fetchAllOtherUsers(): ", error);
+        return false;
+    }
+  }
+
 
   useEffect(() => {
     initCurrentUser();
@@ -51,6 +64,7 @@ export function MainPage() {
   useEffect(() => {
     if (currentUser.id !== 0) {
       fetchAppointments(currentUser.id, accessToken);
+      fetchAllOtherUsers(accessToken)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.id]);
