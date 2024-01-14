@@ -15,9 +15,11 @@ Done:
 - fetch all users for search screen and list them
 - search by language
 - search by name
+- fix backend getbylanguage to return optional and fix otherUser setter in Store
+- delete appointment
 
 In progress:
-- fix backend getbylanguage to return optional
+- create appointment
 
 To do:
 - add icons

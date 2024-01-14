@@ -14,8 +14,14 @@ export function MainPage() {
 
 
   async function initCurrentUser() {
-    let user = await getUserByName(username, accessToken);
-    setCurrentUser(user);
+    try {
+      let user = await getUserByName(username, accessToken);
+      setCurrentUser(user);
+
+    } catch (error) {
+        console.error("Caught error in initCurrentUser(): ", error);
+        return false;
+    }
   }
 
   async function fetchAppointments(currentUserId, accessToken) {

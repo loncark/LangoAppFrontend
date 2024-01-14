@@ -23,6 +23,12 @@ export async function getUsersInAppointments(idList, accessToken) {
     return sendRequestToBackend(apiUrl, "POST", accessToken, idList);
 }
 
+export async function deleteAppointment(aptId, accessToken) {
+    const apiUrl = "http://localhost:7000/appointments/" + aptId;
+
+    return sendRequestToBackend(apiUrl, "DELETE", accessToken);
+}
+
 export async function getUsersSpeakingLanguage(language, accessToken) {
     const apiUrl = (language? "http://localhost:7000/users?language=" + language : "http://localhost:7000/users");
     

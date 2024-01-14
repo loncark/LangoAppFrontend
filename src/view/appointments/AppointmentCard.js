@@ -15,6 +15,7 @@ export function AppointmentCard(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [usersInAppointments])
 
+
     return (
         <div id="appointmentCard">
             <Card>
@@ -29,7 +30,7 @@ export function AppointmentCard(props) {
                 <p id="desc">{ props.aptInfo.description }</p>
                 <div id="buttons">
                     <Button>Edit</Button>
-                    <Button >Delete</Button>
+                    <Button onClick={ props.onDelete }>Delete</Button>
                 </div>
             </Card>
         </div>
