@@ -36,7 +36,7 @@ export function UserCard(props) {
                     <p>{ generateLanguageSentence(props.user.languages) }</p>
                     <p>{ props.user.bio }</p>
                 </div>
-                <Button>Book an appointment with me</Button>
+                <Button onClick={ props.onCreate }>Book an appointment with me</Button>
                 
             </Card>
         </div>

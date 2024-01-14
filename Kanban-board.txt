@@ -24,6 +24,7 @@ In progress:
 To do:
 - add icons
 - make stuff pretty
+- fix response.json() delete error message
 
 - do messages?
 

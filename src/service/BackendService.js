@@ -23,6 +23,12 @@ export async function getUsersInAppointments(idList, accessToken) {
     return sendRequestToBackend(apiUrl, "POST", accessToken, idList);
 }
 
+export async function createAppointment(apt, accessToken) {
+    const apiUrl = "http://localhost:7000/appointments";
+
+    return sendRequestToBackend(apiUrl, "POST", accessToken, apt);
+}
+
 export async function deleteAppointment(aptId, accessToken) {
     const apiUrl = "http://localhost:7000/appointments/" + aptId;
 
