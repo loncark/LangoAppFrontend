@@ -36,3 +36,29 @@
 #description {
     height: 200px;
 }
+
+#aptSidebar * {
+    padding: 5px;
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+#aptSidebar,
+#aptSidebar .form-row
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#aptSidebar Button {
+    padding: 10px;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+#aptDescription {
+    height: 150px;
+}
