@@ -4,16 +4,49 @@ import { Button } from 'primereact/button';
 import "./AppointmentCard.css"
 import { useStore } from '../../state/Store';
 import { useEffect, useState } from 'react';
+import { updateAppointment } from '../../service/BackendService';
+import { Sidebar } from 'primereact/sidebar';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
 
 export function AppointmentCard(props) {
-    const { currentUser, usersInAppointments } = useStore();
+    const { currentUser, usersInAppointments, setAppointments, appointments, accessToken } = useStore();
     const [otherUser, setOtherUser] = useState(undefined);
+
+    const [visibleRight, setVisibleRight] = useState(false);
+    const [dateInput, setDateInput] = useState(props.aptInfo.aptDate);
+    const [aptDescription, setAptDescription] = useState(props.aptInfo.description);
+    const [messageIsVisible, setMessageIsVisible] = useState(false);
+
+    async function onUpdate(aptId, userId1, userId2, newDate, newDescription) {
+        const apt = {
+          id: aptId,
+          userId1: userId1,
+          userId2: userId2,
+          aptDate: newDate,
+          description: newDescription,
+        };
+    
+        try {
+          const newApt = await updateAppointment(apt, accessToken);
+          setAppointments([...appointments.filter(apt => apt.id !== newApt.id), newApt]);
+          setMessageIsVisible(true);
+    
+        } catch (error) {
+          console.error("Caught error in updateAppointment(): ", error);
+          return false;
+        }
+      }
 
     useEffect(() => {
         const otherUserId = (props.aptInfo.userId1 === currentUser.id? props.aptInfo.userId2 : props.aptInfo.userId1);
         setOtherUser(usersInAppointments.find(user => user.id === otherUserId));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [usersInAppointments])
+
+    useEffect(() => {
+        setMessageIsVisible(false);
+      }, [visibleRight])
 
 
     return (
@@ -29,9 +62,39 @@ export function AppointmentCard(props) {
                 <Divider/>
                 <p id="desc">{ props.aptInfo.description }</p>
                 <div id="buttons">
-                    <Button>Edit</Button>
+                    <Button onClick={() => setVisibleRight(true)}>Edit</Button>
                     <Button onClick={ props.onDelete }>Delete</Button>
                 </div>
+
+                <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
+                    <div id="updateAptSidebar">
+                        <h2>Update appointment with { otherUser !== undefined? otherUser.name : 'Not Found' }</h2>
+                        <form>
+                        <div className="form-row">
+                            <label htmlFor="updatedDateInput">Date of appointment</label>
+                            <InputText
+                            type="text"
+                            id="updatedDateInput"
+                            placeholder="YYYY-MM-DD"
+                            value={dateInput}
+                            onChange={(e) => setDateInput(e.target.value)}
+                            ></InputText>
+                        </div>
+                        <div className="form-row">
+                            <label htmlFor="updatedAptDescription">Appointment description</label>
+                            <InputTextarea
+                            type="text"
+                            id="updatedAptDescription"
+                            placeholder="What are you going to go through?"
+                            value={aptDescription}
+                            onChange={(e) => setAptDescription(e.target.value)}
+                            ></InputTextarea>
+                        </div>
+                        </form>
+                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)}>Update</Button>
+                        {messageIsVisible && <p id="updateMsg">Appointment updated.</p>}
+                    </div>
+                </Sidebar>
             </Card>
         </div>
     )

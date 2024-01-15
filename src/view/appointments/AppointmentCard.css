@@ -47,3 +47,33 @@
 #desc {
     height: 100px;
 }
+
+#updateAptSidebar * {
+    padding: 5px;
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+#updateAptSidebar,
+#updateAptSidebar .form-row
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#updateAptSidebar Button {
+    padding: 10px;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+#updatedAptDescription {
+    height: 150px;
+}
+
+#updateMsg {
+    padding: 15px;
+}

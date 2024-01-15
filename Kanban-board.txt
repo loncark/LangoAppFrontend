@@ -17,9 +17,10 @@ Done:
 - search by name
 - fix backend getbylanguage to return optional and fix otherUser setter in Store
 - delete appointment
+- create appointment
 
 In progress:
-- create appointment
+- edit appointment
 
 To do:
 - add icons

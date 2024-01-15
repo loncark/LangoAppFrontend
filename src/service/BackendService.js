@@ -29,6 +29,12 @@ export async function createAppointment(apt, accessToken) {
     return sendRequestToBackend(apiUrl, "POST", accessToken, apt);
 }
 
+export async function updateAppointment(apt, accessToken) {
+    const apiUrl = "http://localhost:7000/appointments";
+
+    return sendRequestToBackend(apiUrl, "PUT", accessToken, apt);
+}
+
 export async function deleteAppointment(aptId, accessToken) {
     const apiUrl = "http://localhost:7000/appointments/" + aptId;
 
