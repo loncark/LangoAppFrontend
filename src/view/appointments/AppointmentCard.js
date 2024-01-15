@@ -62,8 +62,8 @@ export function AppointmentCard(props) {
                 <Divider/>
                 <p id="desc">{ props.aptInfo.description }</p>
                 <div id="buttons">
-                    <Button onClick={() => setVisibleRight(true)}>Edit</Button>
-                    <Button onClick={ props.onDelete }>Delete</Button>
+                    <Button onClick={() => setVisibleRight(true)} icon="pi pi-file-edit">Edit</Button>
+                    <Button onClick={ props.onDelete } icon="pi pi-trash">Delete</Button>
                 </div>
 
                 <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
@@ -91,7 +91,7 @@ export function AppointmentCard(props) {
                             ></InputTextarea>
                         </div>
                         </form>
-                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)}>Update</Button>
+                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check">Update</Button>
                         {messageIsVisible && <p id="updateMsg">Appointment updated.</p>}
                     </div>
                 </Sidebar>

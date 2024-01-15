@@ -18,12 +18,13 @@ Done:
 - fix backend getbylanguage to return optional and fix otherUser setter in Store
 - delete appointment
 - create appointment
-
-In progress:
 - edit appointment
 
+In progress:
+- add icons (pi-sign-out, pi-cog, pi-users, pi-user, pi-check, pi-home)
+
 To do:
-- add icons
+
 - make stuff pretty
 - fix response.json() delete error message
 

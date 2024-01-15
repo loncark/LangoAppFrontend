@@ -23,9 +23,9 @@ export function LoginForm() {
                 </div>
             </form>
             <div id="btn-row">
-                <Button className="btn" id="loginBtn" 
+                <Button className="btn" id="loginBtn" icon="pi pi-sign-in"
                     onClick={() => authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e))}>Log In</Button>
-                <Button className="btn" 
+                <Button className="btn" icon="pi pi-user-plus"
                     onClick={() => register(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e))}>Register</Button>
             </div>
         </div>

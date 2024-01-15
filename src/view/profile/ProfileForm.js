@@ -98,7 +98,7 @@ export function ProfileForm() {
                 </div>       
             </form>
             <div id="updateButton">
-                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)}>Update personal data</Button>
+                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit">Update personal data</Button>
             </div>
         </div>
     )

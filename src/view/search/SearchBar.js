@@ -50,7 +50,7 @@ export function SearchBar() {
                 onChange={(e) => {setLanguage(e.value)}}/>
             <InputText id="inputField" value={searchBarInput}
                 onChange={(e) => setSearchBarInput(e.target.value)}/>
-            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)}>Search</Button>
+            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search">Search</Button>
         </div>
     )
 }
