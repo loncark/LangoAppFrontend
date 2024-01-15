@@ -2,7 +2,7 @@ import { Divider } from "primereact/divider";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import "./UserCard.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createAppointment } from "../../service/BackendService";
 import { useStore } from "../../state/Store";
 import { InputText } from "primereact/inputtext";
@@ -16,6 +16,7 @@ export function UserCard(props) {
   const [visibleRight, setVisibleRight] = useState(false);
   const [dateInput, setDateInput] = useState("");
   const [aptDescription, setAptDescription] = useState("");
+  const [messageIsVisible, setMessageIsVisible] = useState(false);
 
   function generateLanguageSentence(languages) {
     if (!languages) {
@@ -44,11 +45,17 @@ export function UserCard(props) {
     try {
       const newApt = await createAppointment(apt, accessToken);
       setAppointments([...appointments, newApt]);
+      setMessageIsVisible(true);
+
     } catch (error) {
       console.error("Caught error in createAppointment(): ", error);
       return false;
     }
   }
+
+  useEffect(() => {
+    setMessageIsVisible(false);
+  }, [visibleRight])
 
   return (
     <div id="userCard">
@@ -93,7 +100,8 @@ export function UserCard(props) {
                 ></InputTextarea>
               </div>
             </form>
-            <Button onClick={() => onCreate(props.user.name, dateInput, aptDescription)}>Create</Button>
+            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)}>Create</Button>
+            {messageIsVisible && <p id="msg">Appointment created.</p>}
           </div>
         </Sidebar>
       </Card>

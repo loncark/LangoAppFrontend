@@ -62,3 +62,7 @@
 #aptDescription {
     height: 150px;
 }
+
+#msg {
+    padding: 15px;
+}

@@ -31,15 +31,15 @@ export const createCurrentUserAppointmentsSlice = (set) => ({
       setUsersInAppointments: (value) => set({ usersInAppointments: value }),
 })
 
-export const createOtherUsersSlice = (set) => ({
+export const createOtherUsersSlice = (set, get) => ({
       otherUsers: [],
       setOtherUsers: (value) => {
         if (value === null) {
           set({ otherUsers: []});
         } else if (!Array.isArray(value)) {
-          set({ otherUsers: [value] });
+          set({ otherUsers: [value].filter(obj => obj.id !== get().currentUser.id) });
         } else {
-          set({ otherUsers: value });
+          set({ otherUsers: value.filter(obj => obj.id !== get().currentUser.id) });
         }
       },
 })
