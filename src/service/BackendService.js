@@ -69,10 +69,15 @@ export async function sendRequestToBackend(apiUrl, method, accessToken, requestB
           return false;
         }
     
-        const responseData = await response.json();
-        console.log("responseData: " + responseData);
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            const responseData = await response.json();
+            console.log(`Got some responseData from ${method} method`);
 
-        return responseData;
+            return responseData;
+        }
+        else return '';
+        
     
       } catch (error) {
         console.error("Caught error in sendRequestToBackend(): ", error);

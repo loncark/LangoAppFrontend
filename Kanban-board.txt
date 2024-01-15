@@ -20,13 +20,15 @@ Done:
 - create appointment
 - edit appointment
 - add icons
+- make stuff pretty
+- fix response.json() delete error message
+
 
 In progress:
-- make stuff pretty
+- figure out why the double calls?
 
 To do:
 
-- fix response.json() delete error message
 
 - do messages?
 
