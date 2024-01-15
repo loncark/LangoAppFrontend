@@ -29,3 +29,7 @@
 #loginBtn {
     margin-right: 20px;
 }
+
+#loginForm .p-inputtext {
+    width: 250px;
+}

@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { updateUserData } from '../../service/BackendService';
 import { authenticate } from '../../service/AuthenticationService';
 import './ProfileForm.css';
+import 'primeicons/primeicons.css';
 
 
 export function ProfileForm() { 
@@ -98,7 +99,7 @@ export function ProfileForm() {
                 </div>       
             </form>
             <div id="updateButton">
-                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit">Update personal data</Button>
+                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit" label='Update personal data'/>
             </div>
         </div>
     )

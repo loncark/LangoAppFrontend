@@ -19,13 +19,13 @@ Done:
 - delete appointment
 - create appointment
 - edit appointment
+- add icons
 
 In progress:
-- add icons (pi-sign-out, pi-cog, pi-users, pi-user, pi-check, pi-home)
+- make stuff pretty
 
 To do:
 
-- make stuff pretty
 - fix response.json() delete error message
 
 - do messages?

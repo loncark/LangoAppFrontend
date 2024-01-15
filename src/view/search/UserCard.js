@@ -8,6 +8,7 @@ import { useStore } from "../../state/Store";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Sidebar } from "primereact/sidebar";
+import 'primeicons/primeicons.css';
 
 
 export function UserCard(props) {
@@ -73,7 +74,7 @@ export function UserCard(props) {
           <p>{props.user.bio}</p>
         </div>
 
-        <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil">Book an appointment with me</Button>
+        <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil" label="Let's book an appointment"/>
 
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
           <div id="aptSidebar">
@@ -100,7 +101,7 @@ export function UserCard(props) {
                 ></InputTextarea>
               </div>
             </form>
-            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check">Create</Button>
+            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check" label="Create"/>
             {messageIsVisible && <p id="msg">Appointment created.</p>}
           </div>
         </Sidebar>

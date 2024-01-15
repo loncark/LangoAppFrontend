@@ -5,6 +5,7 @@ import './SearchBar.css';
 import { useEffect, useState } from 'react';
 import { useStore } from '../../state/Store';
 import { getUserByName, getUsersSpeakingLanguage } from '../../service/BackendService';
+import 'primeicons/primeicons.css';
 
 export function SearchBar() {
     const { languages, accessToken, setOtherUsers } = useStore();
@@ -50,7 +51,7 @@ export function SearchBar() {
                 onChange={(e) => {setLanguage(e.value)}}/>
             <InputText id="inputField" value={searchBarInput}
                 onChange={(e) => setSearchBarInput(e.target.value)}/>
-            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search">Search</Button>
+            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search" label='Search'/>
         </div>
     )
 }

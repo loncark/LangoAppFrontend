@@ -2,6 +2,7 @@ import { Card } from 'primereact/card';
 import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
 import "./AppointmentCard.css"
+import 'primeicons/primeicons.css';
 import { useStore } from '../../state/Store';
 import { useEffect, useState } from 'react';
 import { updateAppointment } from '../../service/BackendService';
@@ -62,8 +63,8 @@ export function AppointmentCard(props) {
                 <Divider/>
                 <p id="desc">{ props.aptInfo.description }</p>
                 <div id="buttons">
-                    <Button onClick={() => setVisibleRight(true)} icon="pi pi-file-edit">Edit</Button>
-                    <Button onClick={ props.onDelete } icon="pi pi-trash">Delete</Button>
+                    <Button onClick={() => setVisibleRight(true)} icon="pi pi-file-edit" label='Edit'/>
+                    <Button onClick={ props.onDelete } icon="pi pi-trash" label='Delete'/>
                 </div>
 
                 <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
@@ -91,7 +92,7 @@ export function AppointmentCard(props) {
                             ></InputTextarea>
                         </div>
                         </form>
-                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check">Update</Button>
+                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check" label='Update'/>
                         {messageIsVisible && <p id="updateMsg">Appointment updated.</p>}
                     </div>
                 </Sidebar>

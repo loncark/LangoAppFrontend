@@ -17,12 +17,14 @@
     font-size: 40px;
 }
 
-#menuList, #menuList>p {
+#menuList, #menuList>Button {
     width: 100%;
     font-size: large;
+    text-align: left;
+    color: white;
 }
 
-#menuList>p {
+#menuList>Button {
     padding: 10px;
     margin: 0px;
 }

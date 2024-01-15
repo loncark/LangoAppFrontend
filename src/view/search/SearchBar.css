@@ -1,6 +1,8 @@
-#searchbar {
+#searchBar {
     margin: 0px;
-    padding: 5px;
+    margin-top: 20px;
+    margin-right: 25px;
+    padding: 0px;
     width: fit-content;
     height: fit-content;
 
@@ -10,11 +12,7 @@
     align-items: center;
 }
 
-#searchBtn {
-    margin-left: 15px;
-    margin-top: 20px;
-}
-
-#inputField {
-    margin-left: 20px;
+#searchBar .p-dropdown,
+#searchBar .p-inputtext {
+    margin-right: 10px;
 }

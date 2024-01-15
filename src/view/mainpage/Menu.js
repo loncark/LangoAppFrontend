@@ -1,6 +1,8 @@
 import "./Menu.css";
+import 'primeicons/primeicons.css';
 import { Divider } from "primereact/divider";
 import { useStore } from '../../state/Store';
+import { Button } from "primereact/button";
 
 export function Menu(props) {
   const { setUsername, setPassword, setLoginIsSuccessful, setAccessToken, currentUser} = useStore();
@@ -17,11 +19,11 @@ export function Menu(props) {
     <div id="menu">
       <div id="menuList">
         <h1>LanGo</h1>
-        <p onClick={() => props.onSelect('home')}>Home</p>
-        <p onClick={() => props.onSelect('search')}>Search</p>
-        <p onClick={() => props.onSelect('profile')}>Profile</p>
+        <Button label="Home" text icon="pi pi-home" onClick={() => props.onSelect('home')}/>
+        <Button label="Search" text icon="pi pi-search" onClick={() => props.onSelect('search')} />
+        <Button label="Profile" text icon="pi pi-cog" onClick={() => props.onSelect('profile')} />
         <Divider />
-        <p onClick={() => logout()}>Log out</p>
+        <Button label="Log out" text icon="pi pi-sign-out" onClick={() => logout()} />
       </div>
 
       <div id="currentUser">
