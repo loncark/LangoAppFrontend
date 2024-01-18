@@ -5,12 +5,16 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { authenticate, register } from '../../service/AuthenticationService';
 import { useStore } from '../../state/Store';
+import { useSpring, animated } from '@react-spring/web'
+import Animations from '../../state/Animations';
+
 
 export function LoginForm() {
     const { setUsername, setPassword, username, password, setLoginIsSuccessful, setAccessToken } = useStore();
+    const springs = useSpring(Animations.loginFormAnimation);
 
     return(
-        <div id="loginForm">
+        <animated.div id="loginForm" style={{ ...springs }}>
             <form>
                 <div className="form-row">
                     <label htmlFor="username">Username</label>
@@ -29,6 +33,6 @@ export function LoginForm() {
                 <Button className="btn" icon="pi pi-user-plus" label="Register"
                     onClick={() => register(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e))}/>
             </div>
-        </div>
+        </animated.div>
     )
 }

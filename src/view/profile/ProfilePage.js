@@ -1,14 +1,19 @@
 import { ProfileForm } from "./ProfileForm"
 import './ProfilePage.css'
 import { Card } from "primereact/card"
+import { useSpring, animated } from '@react-spring/web'
+import Animations from '../../state/Animations';
+
 
 export function ProfilePage() {
+    const springs = useSpring(Animations.profilePageAnimation);
+
     return (
-        <div id="profilePage">
+        <animated.div id="profilePage" style={{ ...springs }}>
             <h1>Your Data</h1>
             <Card id="card">
                 <ProfileForm/>
             </Card>
-        </div>
+        </animated.div>
     )
 }
