@@ -1,4 +1,7 @@
 
+import axios from 'axios';
+
+
 export async function getUserByName (username, accessToken) {
     const apiUrl = (username? "http://localhost:7000/users?name=" + username : "http://localhost:7000/users");
 
@@ -53,7 +56,7 @@ export async function getAllUsers(accessToken) {
     return sendRequestToBackend(apiUrl, "GET", accessToken);
 }
 
-export async function sendRequestToBackend(apiUrl, method, accessToken, requestBody) {
+export async function sendRequestToBackendUsingFetch(apiUrl, method, accessToken, requestBody) {
     try {
         const response = await fetch(apiUrl, {
           method: method,
@@ -83,4 +86,26 @@ export async function sendRequestToBackend(apiUrl, method, accessToken, requestB
         console.error("Caught error in sendRequestToBackend(): ", error);
         return false;
       }
+}
+
+
+export async function sendRequestToBackend(apiUrl, method, accessToken, requestBody) {
+  try {
+    const response = await axios({
+      method: method,
+      url: apiUrl,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+      },
+      data: requestBody,
+    });
+
+    console.log(`Got some responseData from ${method} method`);
+
+    return response.data;
+  } catch (error) {
+    console.error("Caught error in sendRequestToBackend(): ", error);
+    return false;
+  }
 }
