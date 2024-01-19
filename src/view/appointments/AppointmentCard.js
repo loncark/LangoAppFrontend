@@ -64,7 +64,7 @@ export function AppointmentCard(props) {
                 <p id="desc">{ props.aptInfo.description }</p>
                 <div id="buttons">
                     <Button onClick={() => setVisibleRight(true)} icon="pi pi-file-edit" label='Edit'/>
-                    <Button onClick={ props.onDelete } icon="pi pi-trash" label='Delete'/>
+                    <Button onClick={ props.onDelete } icon="pi pi-trash" label='Delete' outlined/>
                 </div>
 
                 <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>

@@ -1,7 +1,7 @@
 #searchBar {
     margin: 0px;
     margin-top: 20px;
-    margin-right: 25px;
+    margin-right: 18px;
     padding: 0px;
     width: fit-content;
     height: fit-content;
@@ -14,5 +14,5 @@
 
 #searchBar .p-dropdown,
 #searchBar .p-inputtext {
-    margin-right: 10px;
+    margin-right: 18px;
 }

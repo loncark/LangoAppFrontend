@@ -13,7 +13,7 @@ export default {
     fadeInAnimation: {
       from: { opacity: 0 },
         to: { opacity: 1 },
-        config: { duration: 300 },
+        config: { tension: 120, friction: 14, duration: 300 },
     },
 
     profilePageAnimation: {
