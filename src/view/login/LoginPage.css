@@ -15,11 +15,28 @@
     align-items: center;
 }
 
+@keyframes pop {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-40px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
 #flags>img {
     height: 80px;
     width: 80px;
     padding: 5px;
+
+    animation: pop 0.5s ease-in 1s 1 normal both;
 }
+
 #flags {
     margin-bottom: 50px;
 }
