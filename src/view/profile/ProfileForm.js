@@ -13,7 +13,7 @@ import 'primeicons/primeicons.css';
 
 
 export function ProfileForm() { 
-    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful, countries, languages } = useStore();
+    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful, countries, languages, i18n } = useStore();
    
     const countryObjects = countries.map(countryName => ({ name: countryName }));
     // mapping has to exist due to the nature of primereact Dropdown
@@ -65,41 +65,41 @@ export function ProfileForm() {
         <div id="profileForm">
             <div id="imagePart">
                 <img src={process.env.PUBLIC_URL + '/assets/person.png'} alt="img" id="image"/>
-                <Button>Change profile picture</Button>
+                <Button label={i18n.t("change-profile-picture")}/>
             </div>
             <form>
                 <div className="form-row">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">{i18n.t("username")}</label>
                     <InputText type="text" id="username"
                         value={newUsername} onChange={(e) => setNewUsername(e.target.value)}></InputText>
                 </div>      
                 <div className="form-row">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">{i18n.t("password")}</label>
                     <Password type="text" id="password" 
-                        value={newPassword} placeholder='New password'
+                        value={newPassword} placeholder={i18n.t("new-password")}
                         onChange={(e) => setNewPassword(e.target.value)}></Password>
                 </div>  
                 <div className="form-row">
-                    <label htmlFor="country">I live in</label>
+                    <label htmlFor="country">{i18n.t("i-live-in")}</label>
                     <Dropdown id="country" value={newCountry} 
-                        options={countryObjects} optionLabel='name' placeholder='Select Country'
+                        options={countryObjects} optionLabel='name' placeholder={i18n.t("select-country")}
                         onChange={(e) => setNewCountry(e.value)}></Dropdown>
                 </div>
                 <div className="form-row">
-                    <label>I am speaking</label>
+                    <label>{i18n.t("i-am-speaking")}</label>
                     <MultiSelect value={newLanguages} 
                         onChange={(e) => setNewLanguages(e.value)} 
                         options={languageObjects} optionLabel="name" 
-                        placeholder="Select Languages"></MultiSelect>
+                        placeholder={i18n.t("select-languages")}></MultiSelect>
                 </div>
                 <div className="form-row">
-                    <label htmlFor="bio">Bio</label>
-                    <InputTextarea type="text" id="bio" placeholder='Insert new description'
+                    <label htmlFor="bio">{i18n.t("short-bio")}</label>
+                    <InputTextarea type="text" id="bio" placeholder={i18n.t("insert-new-description")}
                         value={newBio} onChange={(e) => setNewBio(e.target.value)}></InputTextarea>
                 </div>       
             </form>
             <div id="updateButton">
-                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit" label='Update personal data'/>
+                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit" label={i18n.t("update-personal-data")}/>
             </div>
         </div>
     )

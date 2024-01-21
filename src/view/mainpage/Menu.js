@@ -5,7 +5,7 @@ import { useStore } from '../../state/Store';
 import { Button } from "primereact/button";
 
 export function Menu(props) {
-  const { setUsername, setPassword, setLoginIsSuccessful, setAccessToken, currentUser} = useStore();
+  const { setUsername, setPassword, setLoginIsSuccessful, setAccessToken, currentUser, i18n} = useStore();
 
   const logout = () => {
     setUsername('');
@@ -19,11 +19,11 @@ export function Menu(props) {
     <div id="menu">
       <div id="menuList">
         <h1>LanGo</h1>
-        <Button label="Home" text icon="pi pi-home" onClick={() => props.onSelect('home')}/>
-        <Button label="Search" text icon="pi pi-search" onClick={() => props.onSelect('search')} />
-        <Button label="Profile" text icon="pi pi-cog" onClick={() => props.onSelect('profile')} />
+        <Button label={i18n.t("home")} text icon="pi pi-home" onClick={() => props.onSelect('home')}/>
+        <Button label={i18n.t("search")} text icon="pi pi-search" onClick={() => props.onSelect('search')} />
+        <Button label={i18n.t("profile")} text icon="pi pi-cog" onClick={() => props.onSelect('profile')} />
         <Divider />
-        <Button label="Log out" text icon="pi pi-sign-out" onClick={() => logout()} />
+        <Button label={i18n.t("log-out")} text icon="pi pi-sign-out" onClick={() => logout()} />
       </div>
 
       <div id="currentUser">

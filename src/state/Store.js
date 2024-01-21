@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import { I18n } from "i18n-js";
+import translations from './Translations.json';
 
 export const createLoginSlice = (set) => ({
   loginIsSuccessful: false,
@@ -46,7 +48,12 @@ export const createOtherUsersSlice = (set, get) => ({
 
 export const createGeneralDataSlice = (set) => ({
       countries: ['UK', 'USA', 'CROATIA', 'GERMANY', 'RUSSIA', 'INDIA', 'SPAIN', 'ITALY', 'FRANCE', 'CANADA', 'JAPAN'],
-      languages: ['ENGLISH', 'GERMAN', 'ITALIAN', 'CROATIAN', 'SPANISH', 'HINDI', 'FRENCH', 'RUSSIAN', 'JAPANESE']
+      languages: ['ENGLISH', 'GERMAN', 'ITALIAN', 'CROATIAN', 'SPANISH', 'HINDI', 'FRENCH', 'RUSSIAN', 'JAPANESE'],
+      i18n: new I18n(translations),
+      setLocale: (lang) => set((state) => {
+        state.i18n.locale = lang;
+        return state;
+      })
 })
 
 export const useStore = create((...a) => ({

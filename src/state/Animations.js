@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     appTitleAnimation: {
       from: { opacity: 0, transform: 'translateY(-100px)' },

@@ -8,7 +8,7 @@ import { getUserByName, getUsersSpeakingLanguage } from '../../service/BackendSe
 import 'primeicons/primeicons.css';
 
 export function SearchBar() {
-    const { languages, accessToken, setOtherUsers } = useStore();
+    const { languages, accessToken, setOtherUsers, i18n } = useStore();
     const [searchBarInput, setSearchBarInput] = useState('');
     const [language, setLanguage] = useState('');
 
@@ -46,12 +46,12 @@ export function SearchBar() {
 
     return (
         <div id="searchBar">
-            <Dropdown placeholder='Choose a language' value={language} 
+            <Dropdown placeholder={i18n.t("choose-a-language")} value={language} 
                 options={languageObjects} optionLabel='name' 
                 onChange={(e) => {setLanguage(e.value)}}/>
             <InputText id="inputField" value={searchBarInput}
                 onChange={(e) => setSearchBarInput(e.target.value)}/>
-            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search" label='Search'/>
+            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search" label={i18n.t("search")}/>
         </div>
     )
 }

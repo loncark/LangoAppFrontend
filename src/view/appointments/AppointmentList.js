@@ -5,7 +5,7 @@ import { deleteAppointment } from '../../service/BackendService';
 
 
 export function AppointmentList() {
-    const { appointments, setAppointments, accessToken } = useStore();
+    const { appointments, setAppointments, accessToken, i18n } = useStore();
 
     async function onDelete(aptId, accessToken) {
         try {
@@ -20,7 +20,7 @@ export function AppointmentList() {
 
     return (
         <div id="appointmentList">
-            {appointments.length? appointments.map((apt) => (<AppointmentCard key={apt.id} aptInfo={apt} onDelete={() => onDelete(apt.id, accessToken)}/>)) : <p>You currently have no appointments scheduled.</p>}
+            {appointments.length? appointments.map((apt) => (<AppointmentCard key={apt.id} aptInfo={apt} onDelete={() => onDelete(apt.id, accessToken)}/>)) : <p>{i18n.t("no-appointments-scheduled")}</p>}
         </div>
     )
 }

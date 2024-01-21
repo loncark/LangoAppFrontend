@@ -12,7 +12,7 @@ import 'primeicons/primeicons.css';
 
 
 export function UserCard(props) {
-  const { currentUser, appointments, setAppointments, accessToken } = useStore();
+  const { currentUser, appointments, setAppointments, accessToken, i18n } = useStore();
 
   const [visibleRight, setVisibleRight] = useState(false);
   const [dateInput, setDateInput] = useState("");
@@ -21,17 +21,18 @@ export function UserCard(props) {
 
   function generateLanguageSentence(languages) {
     if (!languages) {
-      return "I haven't set up my languages yet.";
+      return i18n.t("no-language-setup");
     }
 
-    const languageList = languages.split(",");
+    const languageArray = languages.split(",");
+    const languageList = languageArray.map(language => i18n.t(language));
     const lastLanguage = languageList.pop();
 
     if (languageList.length === 0) {
-      return `I speak ${lastLanguage}.`;
+      return `${i18n.t("i-speak")} ${lastLanguage}.`;
     } else {
-      const languagesString = languageList.join(", ") + " and " + lastLanguage;
-      return `I speak ${languagesString}.`;
+      const languagesString = languageList.join(", ") + ` ${i18n.t("and")} ` + lastLanguage;
+      return `${i18n.t("i-speak")} ${languagesString}.`;
     }
   }
 
@@ -65,7 +66,7 @@ export function UserCard(props) {
           <img src={process.env.PUBLIC_URL + "/assets/person.png"} alt="img" id="image"/>
           <div id="texts">
             <h2>{props.user.name}</h2>
-            <p>Location: {props.user.country}</p>
+            <p>{i18n.t("location")}: {i18n.t(props.user.country)}</p>
           </div>
         </div>
         <Divider />
@@ -74,14 +75,14 @@ export function UserCard(props) {
           <p>{props.user.bio}</p>
         </div>
 
-        <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil" label="Let's book an appointment"/>
+        <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil" label={i18n.t("lets-book-appointment")}/>
 
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
           <div id="aptSidebar">
-            <h2>Book an appointment with {props.user.name}</h2>
+            <h2>{i18n.t("book-appointment-with")} {props.user.name}</h2>
             <form>
               <div className="form-row">
-                <label htmlFor="dateInput">Date of appointment</label>
+                <label htmlFor="dateInput">{i18n.t("date-of-appointment")}</label>
                 <InputText
                   type="text"
                   id="dateInput"
@@ -91,18 +92,18 @@ export function UserCard(props) {
                 ></InputText>
               </div>
               <div className="form-row">
-                <label htmlFor="aptDescription">Appointment description</label>
+                <label htmlFor="aptDescription">{i18n.t("appointment-description")}</label>
                 <InputTextarea
                   type="text"
                   id="aptDescription"
-                  placeholder="What are you going to go through?"
+                  placeholder={i18n.t("what-go-through")}
                   value={aptDescription}
                   onChange={(e) => setAptDescription(e.target.value)}
                 ></InputTextarea>
               </div>
             </form>
-            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check" label="Create"/>
-            {messageIsVisible && <p id="msg">Appointment created.</p>}
+            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check" label={i18n.t("create")}/>
+            {messageIsVisible && <p id="msg">{i18n.t("appointment-created")}</p>}
           </div>
         </Sidebar>
       </Card>

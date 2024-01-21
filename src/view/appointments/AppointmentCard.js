@@ -11,7 +11,7 @@ import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 
 export function AppointmentCard(props) {
-    const { currentUser, usersInAppointments, setAppointments, appointments, accessToken } = useStore();
+    const { currentUser, usersInAppointments, setAppointments, appointments, accessToken, i18n } = useStore();
     const [otherUser, setOtherUser] = useState(undefined);
 
     const [visibleRight, setVisibleRight] = useState(false);
@@ -54,7 +54,7 @@ export function AppointmentCard(props) {
         <div id="appointmentCard">
             <Card>
                 <div id="info">
-                    <h3>{ otherUser !== undefined? otherUser.name : 'Not Found' }</h3>
+                    <h3>{ otherUser !== undefined? otherUser.name : i18n.t("not-found") }</h3>
                     <div id="dateTime">
                         <p>{ props.aptInfo.aptDate }</p>
                         <p>10:30</p>
@@ -63,16 +63,16 @@ export function AppointmentCard(props) {
                 <Divider/>
                 <p id="desc">{ props.aptInfo.description }</p>
                 <div id="buttons">
-                    <Button onClick={() => setVisibleRight(true)} icon="pi pi-file-edit" label='Edit'/>
-                    <Button onClick={ props.onDelete } icon="pi pi-trash" label='Delete' outlined/>
+                    <Button onClick={() => setVisibleRight(true)} icon="pi pi-file-edit" label={i18n.t("edit")}/>
+                    <Button onClick={ props.onDelete } icon="pi pi-trash" label={i18n.t("delete")} outlined/>
                 </div>
 
                 <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
                     <div id="updateAptSidebar">
-                        <h2>Update appointment with { otherUser !== undefined? otherUser.name : 'Not Found' }</h2>
+                        <h2>{i18n.t("update-appointment-with")} { otherUser !== undefined? otherUser.name : i18n.t("not-found") }</h2>
                         <form>
                         <div className="form-row">
-                            <label htmlFor="updatedDateInput">Date of appointment</label>
+                            <label htmlFor="updatedDateInput">{i18n.t("date-of-appointment")}</label>
                             <InputText
                             type="text"
                             id="updatedDateInput"
@@ -82,18 +82,18 @@ export function AppointmentCard(props) {
                             ></InputText>
                         </div>
                         <div className="form-row">
-                            <label htmlFor="updatedAptDescription">Appointment description</label>
+                            <label htmlFor="updatedAptDescription">{i18n.t("appointment-description")}</label>
                             <InputTextarea
                             type="text"
                             id="updatedAptDescription"
-                            placeholder="What are you going to go through?"
+                            placeholder={i18n.t("what-go-through")}
                             value={aptDescription}
                             onChange={(e) => setAptDescription(e.target.value)}
                             ></InputTextarea>
                         </div>
                         </form>
-                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check" label='Update'/>
-                        {messageIsVisible && <p id="updateMsg">Appointment updated.</p>}
+                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check" label={i18n.t("update")}/>
+                        {messageIsVisible && <p id="updateMsg">{i18n.t("appointment-updated")}</p>}
                     </div>
                 </Sidebar>
             </Card>
