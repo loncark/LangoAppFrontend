@@ -31,6 +31,7 @@
 
 #userCard .p-card-content {
     padding: 0px;
+    height: 100%;
 }
 
 #userCard {
@@ -39,6 +40,10 @@
 
 #description {
     height: 200px;
+}
+
+#userCard .p-button {
+    width: 100%;
 }
 
 #aptSidebar * {

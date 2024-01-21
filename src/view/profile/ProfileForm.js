@@ -24,7 +24,7 @@ export function ProfileForm() {
     const [newPassword, setNewPassword] = useState(password);
     const [newCountry, setNewCountry] = useState(currentUser.country? { name: currentUser.country } : { name: '' });
     const [newLanguages, setNewLanguages] = useState(currentUser.languages? currentUser.languages.split(',').map(language => ({name: language.trim()})) : '');
-    const [newBio, setNewBio] = useState('');
+    const [newBio, setNewBio] = useState(currentUser.bio);
 
     useEffect(() => {
         authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e));

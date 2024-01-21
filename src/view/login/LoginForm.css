@@ -5,8 +5,17 @@
     justify-content: center;
 }
 
+#loginForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: fit-content;
+    height: fit-content;
+}
+
 #loginForm .form-row {
-    margin: 20px;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -19,7 +28,7 @@
 }
 
 #btn-row {
-    margin: 20px;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

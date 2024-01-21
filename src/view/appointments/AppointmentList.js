@@ -20,7 +20,7 @@ export function AppointmentList() {
 
     return (
         <div id="appointmentList">
-            {appointments.length? appointments.map((apt) => (<AppointmentCard key={apt.id} aptInfo={apt} onDelete={() => onDelete(apt.id, accessToken)}/>)) : <p>{i18n.t("no-appointments-scheduled")}</p>}
+            {appointments.length? appointments.map((apt) => (<AppointmentCard key={apt.id} aptInfo={apt} onDelete={() => onDelete(apt.id, accessToken)}/>)) : <p>{i18n.t("no-appointments-sheduled")}</p>}
         </div>
     )
 }
