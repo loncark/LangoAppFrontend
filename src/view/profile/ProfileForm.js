@@ -13,7 +13,7 @@ import 'primeicons/primeicons.css';
 
 
 export function ProfileForm() { 
-    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful, countries, languages, i18n } = useStore();
+    const { currentUser, accessToken, username, password, setUsername, setPassword, setAccessToken, setLoginIsSuccessful, countries, languages, i18n, setCurrentUser } = useStore();
    
     const countryObjects = countries.map(countryName => ({ name: countryName }));
     // mapping has to exist due to the nature of primereact Dropdown
@@ -50,10 +50,13 @@ export function ProfileForm() {
         };
 
         try {        
-            await updateUserData(updatedUser, accessToken);
+            const newUser = await updateUserData(updatedUser, accessToken);
 
             setUsername(updatedUser.name);
             setPassword(updatedUser.password);
+            
+            newUser.password = updatedUser.password;
+            setCurrentUser(newUser);
 
         } catch (error) {
             console.error("Caught error in updateUserInfo(): ", error);

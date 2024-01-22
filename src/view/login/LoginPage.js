@@ -29,7 +29,7 @@ export function LoginPage() {
   ];
 
   const showToast = () => {
-    toast.current.show({ severity: 'error', summary: 'Authentication failed.', detail: 'Wrong credentials.', life: 30000 });
+    toast.current.show({ severity: 'error', summary: 'Authentication failed.', detail: 'Wrong credentials.', life: 3000 });
   }
 
   return (
