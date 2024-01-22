@@ -5,13 +5,15 @@ import { useStore } from '../../state/Store';
 import { Button } from "primereact/button";
 
 export function Menu(props) {
-  const { setUsername, setPassword, setLoginIsSuccessful, setAccessToken, currentUser, i18n} = useStore();
+  const { setUsername, setPassword, setLoginIsSuccessful, setAccessToken, currentUser, i18n, setAppointments, setOtherUsers} = useStore();
 
   const logout = () => {
     setUsername('');
     setPassword('');
     setLoginIsSuccessful(false);
     setAccessToken('');
+    setAppointments([]);
+    setOtherUsers([]);
   }
   
 

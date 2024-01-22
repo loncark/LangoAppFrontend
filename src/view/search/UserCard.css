@@ -42,8 +42,17 @@
     height: 200px;
 }
 
-#userCard .p-button {
+#apt-btn {
     width: 100%;
+}
+
+#danger-btn {
+    height: fit-content;
+    aspect-ratio: 1;
+    position: relative;
+    bottom: 370px;
+    left: 230px;
+    color: red;
 }
 
 #aptSidebar * {

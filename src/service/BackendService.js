@@ -54,6 +54,12 @@ export async function getAllUsers(accessToken) {
     return sendRequestToBackend(apiUrl, "GET", accessToken);
 }
 
+export async function deleteAllTracesOfUserWithId(id, accessToken) {
+    const apiUrl = "http://localhost:7000/users?userId=" + id;
+
+    return sendRequestToBackend(apiUrl, "DELETE", accessToken);
+}
+
 export async function sendRequestToBackendUsingFetch(apiUrl, method, accessToken, requestBody) {
     try {
         const response = await fetch(apiUrl, {

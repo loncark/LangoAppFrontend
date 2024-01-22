@@ -75,7 +75,9 @@ export function UserCard(props) {
           <p>{props.user.bio}</p>
         </div>
 
-        <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil" label={i18n.t("lets-book-appointment")}/>
+        <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil" label={i18n.t("lets-book-appointment")} id="apt-btn"/>
+
+        {currentUser.roles === 'ROLE_ADMIN' && <Button onClick={() => props.onDelete(props.user.id)} icon="pi pi-times" outlined severity="danger" id="danger-btn"/>}
 
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
           <div id="aptSidebar">

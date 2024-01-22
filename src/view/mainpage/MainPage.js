@@ -21,7 +21,7 @@ export function MainPage() {
   useEffect(() => {
     if (currentUser.id !== 0) {
       fetchAppointments(currentUser.id, accessToken, setAppointments);
-      fetchAllOtherUsers(accessToken, setOtherUsers, currentUser)
+      fetchAllOtherUsers(accessToken, setOtherUsers, currentUser);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.id]);
