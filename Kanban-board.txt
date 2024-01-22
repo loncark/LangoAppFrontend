@@ -22,6 +22,7 @@ Done:
 - add icons
 - make stuff pretty
 - fix response.json() delete error message
+- make admin able to delete all data of an user
 
 
 In progress:

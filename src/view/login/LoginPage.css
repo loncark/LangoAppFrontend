@@ -40,3 +40,14 @@
 #flags {
     margin-bottom: 50px;
 }
+
+#loginPage .p-toast .p-toast-message.p-toast-message-error {
+    background-color: rgba(246, 59, 59, 0.2);
+    border: none;
+    color: #fca5a5;
+}
+
+#loginPage .p-toast .p-toast-message.p-toast-message-error .p-toast-message-icon,
+#loginPage .p-toast .p-toast-message.p-toast-message-error .p-toast-icon-close {
+    color: #fca5a5;
+}

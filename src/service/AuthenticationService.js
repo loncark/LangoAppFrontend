@@ -7,8 +7,9 @@ export const authenticate = async (username, password, setLoginIsSuccessful, set
     if (accessToken) {
       setLoginIsSuccessful(true);
       setAccessToken(accessToken);
-
+      return true;
     }
+    else return false;
   } catch (error) {
     console.error("Caught error in authenticate():", error);
   }

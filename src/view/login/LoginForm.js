@@ -7,8 +7,15 @@ import { authenticate, register } from '../../service/AuthenticationService';
 import { useStore } from '../../state/Store';
 
 
-export function LoginForm() {
+export function LoginForm(props) {
     const { setUsername, setPassword, username, password, setLoginIsSuccessful, setAccessToken, i18n } = useStore();
+
+    const onLogin = async () => {
+        const loginSuccess = await authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e));
+        if (!loginSuccess) {
+            props.showToast();
+        }
+    }
 
     return(
         <div id="loginForm">
@@ -25,8 +32,7 @@ export function LoginForm() {
                 </div>
             </form>
             <div id="btn-row">
-                <Button className="btn" id="loginBtn" icon="pi pi-sign-in" label={i18n.t("log-in")}
-                    onClick={() => authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e))}/>
+                <Button className="btn" id="loginBtn" icon="pi pi-sign-in" label={i18n.t("log-in")} onClick={onLogin}/>
                 <Button className="btn" icon="pi pi-user-plus" label={i18n.t("register")}
                     onClick={() => register(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e))}/>
             </div>

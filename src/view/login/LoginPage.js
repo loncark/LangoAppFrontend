@@ -4,14 +4,16 @@ import "./LoginPage.css"
 import { useSpring, animated } from '@react-spring/web'
 import Animations from '../../state/Animations';
 import { useStore } from "../../state/Store";
-import { useState } from "react";
-
+import { useState, useRef } from "react";
+import { Toast } from 'primereact/toast';
+ 
 export function LoginPage() {
   const springs = useSpring(Animations.appTitleAnimation); 
   const springs2 = useSpring(Animations.loginFormAnimation);
   const { setLocale, i18n } = useStore();
   // eslint-disable-next-line
   const [lang, setLang] = useState('en');
+  const toast = useRef(null);
 
   const countries = [
     { name: "croatia", code: "hr" },
@@ -26,11 +28,15 @@ export function LoginPage() {
     { name: "china", code: "chn" },
   ];
 
+  const showToast = () => {
+    toast.current.show({ severity: 'error', summary: 'Authentication failed.', detail: 'Wrong credentials.', life: 30000 });
+  }
+
   return (
     <div id="loginPage">
       <animated.div id="loginTexts" style={{ ...springs }}>
         <AppTitle />
-        <LoginForm />
+        <LoginForm showToast={showToast}/>
       </animated.div>
 
       <animated.div id="flags" style={{ ...springs2 }}>
@@ -45,6 +51,7 @@ export function LoginPage() {
           />
         ))}
       </animated.div>
+      <Toast ref={toast} position="bottom-center"/>
     </div>
   );
 }
