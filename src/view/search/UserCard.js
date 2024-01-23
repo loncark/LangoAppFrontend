@@ -10,6 +10,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Sidebar } from "primereact/sidebar";
 import 'primeicons/primeicons.css';
 import { Toast } from 'primereact/toast';
+import { ConfirmDialog } from 'primereact/confirmdialog';
 
 
 export function UserCard(props) {
@@ -19,6 +20,7 @@ export function UserCard(props) {
   const [dateInput, setDateInput] = useState("");
   const [aptDescription, setAptDescription] = useState("");
   const aptCreatedToast = useRef(null);
+  const [visible, setVisible] = useState(false);
 
   function generateLanguageSentence(languages) {
     if (!languages) {
@@ -57,6 +59,9 @@ export function UserCard(props) {
     }
   }
 
+  const accept = () => { props.onDelete(props.user.id); }
+  const reject = () => {}
+
 
   return (
     <div id="userCard">
@@ -76,7 +81,13 @@ export function UserCard(props) {
 
         <Button onClick={() => setVisibleRight(true)} icon="pi pi-pencil" label={i18n.t("lets-book-appointment")} id="apt-btn"/>
 
-        {currentUser.roles === 'ROLE_ADMIN' && <Button onClick={() => props.onDelete(props.user.id)} icon="pi pi-times" outlined severity="danger" id="danger-btn"/>}
+        {currentUser.roles === 'ROLE_ADMIN' && 
+          <>
+            <Button onClick={() => setVisible(true)} icon="pi pi-times" outlined severity="danger" id="danger-btn"/>
+            <ConfirmDialog group="declarative"  visible={visible} onHide={() => setVisible(false)} icon="pi pi-exclamation-triangle"
+                accept={accept} reject={reject} message="Are you sure you want to delete this user and all of his data?" header="Confirmation"/>
+          </>
+        }
 
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
           <div id="aptSidebar">

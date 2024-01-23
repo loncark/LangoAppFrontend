@@ -5,3 +5,14 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
 }
+
+#userList .p-toast .p-toast-message.p-toast-message-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    border: none;
+    color: #6ee7b7;
+}
+
+#userList .p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon,
+#userList .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
+    color: #6ee7b7;
+}
