@@ -60,7 +60,7 @@ export function ProfileForm() {
             newUser.password = updatedUser.password;
             setCurrentUser(newUser);
 
-            userUpdatedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Your data has been successfully updated.', life: 3000 });
+            userUpdatedToast.current.show({ severity: 'success', summary: i18n.t("success"), detail: i18n.t("data-updated"), life: 3000 });
 
         } catch (error) {
             console.error("Caught error in updateUserInfo(): ", error);

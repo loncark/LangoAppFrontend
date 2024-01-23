@@ -67,7 +67,17 @@
       "ITALY": "Italy",
       "FRANCE": "France",
       "CANADA": "Canada",
-      "JAPAN": "Japan"
+      "JAPAN": "Japan",
+
+      "authentication-failed": "Authentication failed.",
+      "wrong-credentials": "Wrong credentials.",
+      "success": "Success",
+      "appointment-deleted": "Appointment deleted.",
+      "data-updated": "Your data has been successfully updated.",
+      "are-you-sure": "Are you sure you want to delete this user and all of his data?",
+      "confirmation": "Confirmation",
+      "confirmed": "Confirmed",
+      "user-deletion-successful": "You have successfully deleted the user and all of his data."
 
     },
 
@@ -139,7 +149,18 @@
       "ITALY": "Italia",
       "FRANCE": "Francia",
       "CANADA": "Canada",
-      "JAPAN": "Giappone"
+      "JAPAN": "Giappone",
+
+      "authentication-failed": "Autenticazione fallita.",
+      "wrong-credentials": "Credenziali errate.",
+      "success": "Successo",
+      "appointment-deleted": "Appuntamento cancellato.",
+      "data-updated": "I tuoi dati sono stati aggiornati con successo.",
+      "are-you-sure": "Sei sicuro di voler eliminare questo utente e tutti i suoi dati?",
+      "confirmation": "Conferma",
+      "confirmed": "Confermato",
+      "user-deletion-successful": "Hai eliminato con successo l'utente e tutti i suoi dati."
+
     },
 
     "de": {
@@ -210,7 +231,17 @@
       "ITALY": "Italien",
       "FRANCE": "Frankreich",
       "CANADA": "Kanada",
-      "JAPAN": "Japan"
+      "JAPAN": "Japan",
+
+      "authentication-failed": "Authentifizierung fehlgeschlagen.",
+      "wrong-credentials": "Falsche Anmeldedaten.",
+      "success": "Erfolg",
+      "appointment-deleted": "Termin gelöscht.",
+      "data-updated": "Ihre Daten wurden erfolgreich aktualisiert.",
+      "are-you-sure": "Sind Sie sicher, dass Sie diesen Benutzer und alle seine Daten löschen möchten?",
+      "confirmation": "Bestätigung",
+      "confirmed": "Bestätigt",
+      "user-deletion-successful": "Sie haben den Benutzer und alle seine Daten erfolgreich gelöscht."
     },
 
     "fr": {
@@ -281,7 +312,17 @@
       "ITALY": "Italie",
       "FRANCE": "France",
       "CANADA": "Canada",
-      "JAPAN": "Japon"
+      "JAPAN": "Japon",
+
+      "authentication-failed": "Échec de l'authentification.",
+      "wrong-credentials": "Identifiants incorrects.",
+      "success": "Succès",
+      "appointment-deleted": "Rendez-vous supprimé.",
+      "data-updated": "Vos données ont été mises à jour avec succès.",
+      "are-you-sure": "Êtes-vous sûr de vouloir supprimer cet utilisateur et toutes ses données ?",
+      "confirmation": "Confirmation",
+      "confirmed": "Confirmé",
+      "user-deletion-successful": "Vous avez réussi à supprimer l'utilisateur et toutes ses données."
     },
 
     "ru": {
@@ -352,7 +393,17 @@
       "ITALY": "Италия",
       "FRANCE": "Франция",
       "CANADA": "Канада",
-      "JAPAN": "Япония"
+      "JAPAN": "Япония",
+
+      "authentication-failed": "Ошибка аутентификации.",
+      "wrong-credentials": "Неверные учетные данные.",
+      "success": "Успех",
+      "appointment-deleted": "Запись удалена.",
+      "data-updated": "Ваши данные успешно обновлены.",
+      "are-you-sure": "Вы уверены, что хотите удалить этого пользователя и всю его информацию?",
+      "confirmation": "Подтверждение",
+      "confirmed": "Подтверждено",
+      "user-deletion-successful": "Вы успешно удалили пользователя и всю его информацию."
     },
     
     "hr": {
@@ -423,7 +474,17 @@
       "ITALY": "Italija",
       "FRANCE": "Francuska",
       "CANADA": "Kanada",
-      "JAPAN": "Japan"
+      "JAPAN": "Japan",
+
+      "authentication-failed": "Neuspjela autentikacija.",
+      "wrong-credentials": "Pogrešni pristupni podaci.",
+      "success": "Uspjeh",
+      "appointment-deleted": "Termin obrisan.",
+      "data-updated": "Vaši podaci su uspješno ažurirani.",
+      "are-you-sure": "Jeste li sigurni da želite izbrisati ovog korisnika i sve njegove podatke?",
+      "confirmation": "Potvrda",
+      "confirmed": "Potvrđeno",
+      "user-deletion-successful": "Uspješno ste izbrisali korisnika i sve njegove podatke."
     },
 
     "in": {
@@ -494,7 +555,18 @@
       "ITALY": "इटली",
       "FRANCE": "फ्रांस",
       "CANADA": "कनाडा",
-      "JAPAN": "जापान"
+      "JAPAN": "जापान",
+
+      "authentication-failed": "प्रमाणीकरण असफल हुआ।",
+      "wrong-credentials": "गलत प्रमाणपत्र।",
+      "success": "सफलता",
+      "appointment-deleted": "अपॉइंटमेंट हटा दी गई है।",
+      "data-updated": "आपका डेटा सफलता पूर्वक अपडेट हुआ है।",
+      "are-you-sure": "क्या आप इस उपयोगकर्ता को और उसके सभी डेटा को हटाना चाहते हैं?",
+      "confirmation": "पुष्टिकरण",
+      "confirmed": "पुष्टि की गई",
+      "user-deletion-successful": "आपने सफलता पूर्वक उपयोगकर्ता और उसके सभी डेटा को हटा दिया है।"
+
     },
     
     "jp": {
@@ -565,7 +637,17 @@
       "ITALY": "イタリア",
       "FRANCE": "フランス",
       "CANADA": "カナダ",
-      "JAPAN": "日本"
+      "JAPAN": "日本",
+
+      "authentication-failed": "認証に失敗しました。",
+      "wrong-credentials": "認証情報が間違っています。",
+      "success": "成功",
+      "appointment-deleted": "予約が削除されました。",
+      "data-updated": "データが正常に更新されました。",
+      "are-you-sure": "このユーザーとそのデータを削除してもよろしいですか？",
+      "confirmation": "確認",
+      "confirmed": "確認済み",
+      "user-deletion-successful": "ユーザーとそのデータを正常に削除しました。"
     },
     
     "chn": {
@@ -636,7 +718,17 @@
       "ITALY": "意大利",
       "FRANCE": "法国",
       "CANADA": "加拿大",
-      "JAPAN": "日本"
+      "JAPAN": "日本",
+
+      "authentication-failed": "身份验证失败。",
+      "wrong-credentials": "错误的凭据。",
+      "success": "成功",
+      "appointment-deleted": "预约已删除。",
+      "data-updated": "您的数据已成功更新。",
+      "are-you-sure": "您确定要删除此用户及其所有数据吗？",
+      "confirmation": "确认",
+      "confirmed": "已确认",
+      "user-deletion-successful": "您已成功删除用户及其所有数据。"
     }
     
     

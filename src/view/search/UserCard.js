@@ -51,7 +51,7 @@ export function UserCard(props) {
       const newApt = await createAppointment(apt, accessToken);
       setAppointments([...appointments, newApt]);
 
-      aptCreatedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Appointment created.', life: 2000 });
+      aptCreatedToast.current.show({ severity: 'success', summary: i18n.t("success"), detail: i18n.t("appointment-created"), life: 2000 });
 
     } catch (error) {
       console.error("Caught error in createAppointment(): ", error);
@@ -85,7 +85,7 @@ export function UserCard(props) {
           <>
             <Button onClick={() => setVisible(true)} icon="pi pi-times" outlined severity="danger" id="danger-btn"/>
             <ConfirmDialog group="declarative"  visible={visible} onHide={() => setVisible(false)} icon="pi pi-exclamation-triangle"
-                accept={accept} reject={reject} message="Are you sure you want to delete this user and all of his data?" header="Confirmation"/>
+                accept={accept} reject={reject} message={i18n.t("are-you-sure")} header={i18n.t("confirmation")}/>
           </>
         }
 

@@ -33,7 +33,7 @@ export function AppointmentCard(props) {
           const newApt = await updateAppointment(apt, accessToken);
           setAppointments([...appointments.filter(apt => apt.id !== newApt.id), newApt]);
 
-          aptUpdatedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Appointment updated.', life: 3000 });
+          aptUpdatedToast.current.show({ severity: 'success', summary: i18n.t("success"), detail: i18n.t("appointment-updated"), life: 3000 });
     
         } catch (error) {
           console.error("Caught error in updateAppointment(): ", error);

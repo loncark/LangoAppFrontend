@@ -15,7 +15,7 @@ export function AppointmentList() {
             await deleteAppointment(aptId, accessToken);
             setAppointments(appointments.filter(apt => apt.id !== aptId)); 
 
-            aptDeletedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Appointment deleted.', life: 1500 });
+            aptDeletedToast.current.show({ severity: 'success', summary: i18n.t("success"), detail: i18n.t("appointment-deleted"), life: 1500 });
       
           } catch (error) {
               console.error("Caught error in onDelete(): ", error);
