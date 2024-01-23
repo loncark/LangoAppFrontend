@@ -11,6 +11,7 @@ import { authenticate } from '../../service/AuthenticationService';
 import './ProfileForm.css';
 import 'primeicons/primeicons.css';
 import { Toast } from 'primereact/toast';
+import { isInputInvalidSpaceAllowed, isInputInvalid } from '../../service/Util';
 
 
 export function ProfileForm() { 
@@ -106,7 +107,9 @@ export function ProfileForm() {
                 </div>       
             </form>
             <div id="updateButton">
-                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit" label={i18n.t("update-personal-data")}/>
+                    <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} 
+                        icon="pi pi-user-edit" label={i18n.t("update-personal-data")}
+                        disabled={isInputInvalid(newUsername, newPassword) || isInputInvalidSpaceAllowed(newBio)}/>
             </div>
             <Toast ref={userUpdatedToast} position="center"/>
         </div>

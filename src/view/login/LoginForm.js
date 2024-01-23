@@ -5,6 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { authenticate, register } from '../../service/AuthenticationService';
 import { useStore } from '../../state/Store';
+import { isInputInvalid } from "../../service/Util";
 
 
 export function LoginForm(props) {
@@ -17,6 +18,7 @@ export function LoginForm(props) {
         }
     }
 
+
     return(
         <div id="loginForm">
             <form>
@@ -27,13 +29,13 @@ export function LoginForm(props) {
                 </div>
                 <div className="form-row">
                     <label htmlFor="password">{i18n.t("password")}</label>
-                    <Password type="text" id="password" 
+                    <Password type="text" id="password" toggleMask
                         onChange={(e) => setPassword(e.target.value)} feedback={false}></Password>
                 </div>
             </form>
             <div id="btn-row">
-                <Button className="btn" id="loginBtn" icon="pi pi-sign-in" label={i18n.t("log-in")} onClick={onLogin}/>
-                <Button className="btn" icon="pi pi-user-plus" label={i18n.t("register")}
+                <Button className="btn" id="loginBtn" icon="pi pi-sign-in" label={i18n.t("log-in")} onClick={onLogin} disabled={isInputInvalid(username, password)}/>
+                <Button className="btn" icon="pi pi-user-plus" label={i18n.t("register")} disabled={isInputInvalid(username, password)}
                     onClick={() => register(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e))}/>
             </div>
         </div>

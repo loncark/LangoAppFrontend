@@ -11,6 +11,7 @@ import { Sidebar } from "primereact/sidebar";
 import 'primeicons/primeicons.css';
 import { Toast } from 'primereact/toast';
 import { ConfirmDialog } from 'primereact/confirmdialog';
+import { isValidDateFormat, isInputInvalidSpaceAllowed } from "../../service/Util";
 
 
 export function UserCard(props) {
@@ -114,7 +115,8 @@ export function UserCard(props) {
                 ></InputTextarea>
               </div>
             </form>
-            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check" label={i18n.t("create")}/>
+            <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check" 
+              label={i18n.t("create")} disabled={!isValidDateFormat(dateInput) || isInputInvalidSpaceAllowed(dateInput, aptDescription)}/>
           </div>
         </Sidebar>
       </Card>

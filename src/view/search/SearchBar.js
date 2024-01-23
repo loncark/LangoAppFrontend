@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useStore } from '../../state/Store';
 import { getUserByName, getUsersSpeakingLanguage } from '../../service/BackendService';
 import 'primeicons/primeicons.css';
+import { isInputInvalid } from '../../service/Util';
 
 export function SearchBar() {
     const { languages, accessToken, setOtherUsers, i18n } = useStore();
@@ -51,7 +52,8 @@ export function SearchBar() {
                 onChange={(e) => {setLanguage(e.value)}}/>
             <InputText id="inputField" value={searchBarInput}
                 onChange={(e) => setSearchBarInput(e.target.value)}/>
-            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search" label={i18n.t("search")}/>
+            <Button id="searchBtn" onClick={() => fetchUsersByName(searchBarInput)} icon="pi pi-search" 
+                label={i18n.t("search")} disabled={isInputInvalid(searchBarInput)}/>
         </div>
     )
 }

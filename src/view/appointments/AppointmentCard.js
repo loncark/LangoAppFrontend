@@ -10,6 +10,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Toast } from 'primereact/toast';
+import { isInputInvalidSpaceAllowed, isValidDateFormat } from '../../service/Util';
 
 export function AppointmentCard(props) {
     const { currentUser, usersInAppointments, setAppointments, appointments, accessToken, i18n } = useStore();
@@ -90,7 +91,8 @@ export function AppointmentCard(props) {
                             ></InputTextarea>
                         </div>
                         </form>
-                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check" label={i18n.t("update")}/>
+                        <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} 
+                            icon="pi pi-check" label={i18n.t("update")} disabled={!isValidDateFormat(dateInput) || isInputInvalidSpaceAllowed(dateInput, aptDescription)}/>
                     </div>
                 </Sidebar>
             </Card>

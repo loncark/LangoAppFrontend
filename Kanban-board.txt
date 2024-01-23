@@ -23,14 +23,14 @@ Done:
 - make stuff pretty
 - fix response.json() delete error message
 - make admin able to delete all data of an user
-- added toast messages/popups and their translations
-
+- add toast messages/popups and their translations
+- add input sanitization
 
 In progress:
-- figure out why the double calls?
 
 To do:
-
+- fix responsiveness of the grids
+- figure out why the double calls?
 - messages and reviews
 
  -- LESSONS LEARNED --
