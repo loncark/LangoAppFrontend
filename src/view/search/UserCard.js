@@ -2,13 +2,14 @@ import { Divider } from "primereact/divider";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import "./UserCard.css";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { createAppointment } from "../../service/BackendService";
 import { useStore } from "../../state/Store";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Sidebar } from "primereact/sidebar";
 import 'primeicons/primeicons.css';
+import { Toast } from 'primereact/toast';
 
 
 export function UserCard(props) {
@@ -17,7 +18,7 @@ export function UserCard(props) {
   const [visibleRight, setVisibleRight] = useState(false);
   const [dateInput, setDateInput] = useState("");
   const [aptDescription, setAptDescription] = useState("");
-  const [messageIsVisible, setMessageIsVisible] = useState(false);
+  const aptCreatedToast = useRef(null);
 
   function generateLanguageSentence(languages) {
     if (!languages) {
@@ -47,7 +48,8 @@ export function UserCard(props) {
     try {
       const newApt = await createAppointment(apt, accessToken);
       setAppointments([...appointments, newApt]);
-      setMessageIsVisible(true);
+
+      aptCreatedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Appointment created.', life: 2000 });
 
     } catch (error) {
       console.error("Caught error in createAppointment(): ", error);
@@ -55,9 +57,6 @@ export function UserCard(props) {
     }
   }
 
-  useEffect(() => {
-    setMessageIsVisible(false);
-  }, [visibleRight])
 
   return (
     <div id="userCard">
@@ -105,10 +104,10 @@ export function UserCard(props) {
               </div>
             </form>
             <Button onClick={() => onCreate(props.user.id, dateInput, aptDescription)} icon="pi pi-check" label={i18n.t("create")}/>
-            {messageIsVisible && <p id="msg">{i18n.t("appointment-created")}</p>}
           </div>
         </Sidebar>
       </Card>
+      <Toast ref={aptCreatedToast} position="bottom-right"/>
     </div>
   );
 }

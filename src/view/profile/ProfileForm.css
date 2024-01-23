@@ -46,3 +46,16 @@
 #profileForm .p-dropdown {
     width: 180px;
 }
+
+#profileForm .p-toast .p-toast-message.p-toast-message-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    border: none;
+    color: #6ee7b7;
+    position: relative;
+    left: 420px;
+}
+
+#profileForm .p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon,
+#profileForm .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
+    color: #6ee7b7;
+}

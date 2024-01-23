@@ -5,7 +5,6 @@ import { useSpring, animated } from '@react-spring/web'
 import Animations from '../../state/Animations';
 import { useStore } from "../../state/Store";
 
-
 export function ProfilePage() {
     const springs = useSpring(Animations.profilePageAnimation);
     const { i18n } = useStore();

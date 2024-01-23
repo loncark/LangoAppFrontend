@@ -5,11 +5,12 @@ import { Dropdown } from 'primereact/dropdown';
 import { MultiSelect } from 'primereact/multiselect';
 import { Password } from 'primereact/password';
 import { useStore } from '../../state/Store';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { updateUserData } from '../../service/BackendService';
 import { authenticate } from '../../service/AuthenticationService';
 import './ProfileForm.css';
 import 'primeicons/primeicons.css';
+import { Toast } from 'primereact/toast';
 
 
 export function ProfileForm() { 
@@ -25,6 +26,7 @@ export function ProfileForm() {
     const [newCountry, setNewCountry] = useState(currentUser.country? { name: currentUser.country } : { name: '' });
     const [newLanguages, setNewLanguages] = useState(currentUser.languages? currentUser.languages.split(',').map(language => ({name: language.trim()})) : '');
     const [newBio, setNewBio] = useState(currentUser.bio);
+    const userUpdatedToast = useRef(null);
 
     useEffect(() => {
         authenticate(username, password, (e) => setLoginIsSuccessful(e), (e) => setAccessToken(e));
@@ -57,6 +59,8 @@ export function ProfileForm() {
             
             newUser.password = updatedUser.password;
             setCurrentUser(newUser);
+
+            userUpdatedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Your data has been successfully updated.', life: 3000 });
 
         } catch (error) {
             console.error("Caught error in updateUserInfo(): ", error);
@@ -104,6 +108,7 @@ export function ProfileForm() {
             <div id="updateButton">
                     <Button onClick={() => updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages)} icon="pi pi-user-edit" label={i18n.t("update-personal-data")}/>
             </div>
+            <Toast ref={userUpdatedToast} position="center"/>
         </div>
     )
 }

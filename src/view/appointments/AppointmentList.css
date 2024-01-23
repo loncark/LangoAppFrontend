@@ -9,3 +9,14 @@
 #appointmentList>p {
     width: 400px;
 }
+
+#appointmentList .p-toast .p-toast-message.p-toast-message-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    border: none;
+    color: #6ee7b7;
+}
+
+#appointmentList .p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon,
+#appointmentList .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
+    color: #6ee7b7;
+}

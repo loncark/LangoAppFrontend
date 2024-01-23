@@ -83,3 +83,18 @@
 #msg {
     padding: 15px;
 }
+
+#userCard .p-toast .p-toast-message.p-toast-message-success {
+    background-color: rgba(16, 185, 129, 0.2);
+    border: none;
+    color: #6ee7b7;
+    width: 270px;
+    position: fixed;
+    right: 25px;
+    bottom: 20px;
+}
+
+#userCard .p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon,
+#userCard .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
+    color: #6ee7b7;
+}

@@ -4,11 +4,12 @@ import { Button } from 'primereact/button';
 import "./AppointmentCard.css"
 import 'primeicons/primeicons.css';
 import { useStore } from '../../state/Store';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { updateAppointment } from '../../service/BackendService';
 import { Sidebar } from 'primereact/sidebar';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
+import { Toast } from 'primereact/toast';
 
 export function AppointmentCard(props) {
     const { currentUser, usersInAppointments, setAppointments, appointments, accessToken, i18n } = useStore();
@@ -17,7 +18,7 @@ export function AppointmentCard(props) {
     const [visibleRight, setVisibleRight] = useState(false);
     const [dateInput, setDateInput] = useState(props.aptInfo.aptDate);
     const [aptDescription, setAptDescription] = useState(props.aptInfo.description);
-    const [messageIsVisible, setMessageIsVisible] = useState(false);
+    const aptUpdatedToast = useRef(null);
 
     async function onUpdate(aptId, userId1, userId2, newDate, newDescription) {
         const apt = {
@@ -31,7 +32,8 @@ export function AppointmentCard(props) {
         try {
           const newApt = await updateAppointment(apt, accessToken);
           setAppointments([...appointments.filter(apt => apt.id !== newApt.id), newApt]);
-          setMessageIsVisible(true);
+
+          aptUpdatedToast.current.show({ severity: 'success', summary: 'Success', detail: 'Appointment updated.', life: 3000 });
     
         } catch (error) {
           console.error("Caught error in updateAppointment(): ", error);
@@ -44,10 +46,6 @@ export function AppointmentCard(props) {
         setOtherUser(usersInAppointments.find(user => user.id === otherUserId));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [usersInAppointments])
-
-    useEffect(() => {
-        setMessageIsVisible(false);
-      }, [visibleRight])
 
 
     return (
@@ -93,10 +91,10 @@ export function AppointmentCard(props) {
                         </div>
                         </form>
                         <Button onClick={() => onUpdate(props.aptInfo.id, props.aptInfo.userId1, props.aptInfo.userId2, dateInput, aptDescription)} icon="pi pi-check" label={i18n.t("update")}/>
-                        {messageIsVisible && <p id="updateMsg">{i18n.t("appointment-updated")}</p>}
                     </div>
                 </Sidebar>
             </Card>
+            <Toast ref={aptUpdatedToast} position="bottom-right"/>
         </div>
     )
 }
