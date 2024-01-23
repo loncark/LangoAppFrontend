@@ -15,6 +15,15 @@
     align-items: center;
 }
 
+@media only screen and (max-width: 900px) {
+    #loginTexts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 @keyframes pop {
     0% {
         transform: translateY(0);
