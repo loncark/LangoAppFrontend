@@ -16,3 +16,14 @@
 #searchBar .p-inputtext {
     margin-right: 18px;
 }
+
+@media only screen and (max-width: 900px) {
+    #searchBar {
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+    #searchBar>* {
+        margin: 5px;
+    }
+}

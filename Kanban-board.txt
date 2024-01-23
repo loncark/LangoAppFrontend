@@ -25,11 +25,12 @@ Done:
 - make admin able to delete all data of an user
 - add toast messages/popups and their translations
 - add input sanitization
+- fix responsiveness of the grids
+
 
 In progress:
 
 To do:
-- fix responsiveness of the grids
 - figure out why the double calls?
 - messages and reviews
 

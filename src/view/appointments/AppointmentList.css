@@ -6,6 +6,22 @@
     grid-gap: 20px;
 }
 
+@media only screen and (max-width: 1500px) {
+    #appointmentList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (max-width: 1200px) {
+    #appointmentList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (max-width: 900px) {
+    #appointmentList {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 #appointmentList>p {
     width: 400px;
 }

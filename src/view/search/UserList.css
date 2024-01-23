@@ -6,6 +6,22 @@
     grid-gap: 20px;
 }
 
+@media only screen and (max-width: 1500px) {
+    #userList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (max-width: 1200px) {
+    #userList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (max-width: 900px) {
+    #userList {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 #userList .p-toast .p-toast-message.p-toast-message-success {
     background-color: rgba(16, 185, 129, 0.2);
     border: none;

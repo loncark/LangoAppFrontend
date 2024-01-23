@@ -18,3 +18,11 @@
 #topBar>h1 {
     margin-bottom: 0px;
 }
+
+@media only screen and (max-width: 1200px) {
+    #topBar {
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+}
