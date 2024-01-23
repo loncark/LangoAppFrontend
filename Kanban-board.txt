@@ -23,6 +23,7 @@ Done:
 - make stuff pretty
 - fix response.json() delete error message
 - make admin able to delete all data of an user
+- added toast messages/popups and their translations
 
 
 In progress:
@@ -30,10 +31,7 @@ In progress:
 
 To do:
 
-
-- do messages?
-
-
+- messages and reviews
 
  -- LESSONS LEARNED --
  1. Disable cors in SecurityFilterChain on backend and add @CrossOrigin to all controllers 

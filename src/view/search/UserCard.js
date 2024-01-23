@@ -70,7 +70,7 @@ export function UserCard(props) {
           <img src={process.env.PUBLIC_URL + "/assets/person.png"} alt="img" id="image"/>
           <div id="texts">
             <h2>{props.user.name}</h2>
-            <p>{i18n.t("location")}: {i18n.t(props.user.country)}</p>
+            <p>{i18n.t("location")}: {props.user.country? i18n.t(props.user.country) : '?'}</p>
           </div>
         </div>
         <Divider />

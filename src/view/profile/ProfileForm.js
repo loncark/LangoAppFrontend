@@ -40,7 +40,7 @@ export function ProfileForm() {
 
 
     async function updateUserInfo(newUsername, newPassword, newCountry, newBio, newLanguages) {
-        const langString = newLanguages.map(languageObject => languageObject.name).join(',');
+        let langString = newLanguages? newLanguages.map(languageObject => languageObject.name).join(',') : '';
 
         let updatedUser = {
             id: currentUser.id,
