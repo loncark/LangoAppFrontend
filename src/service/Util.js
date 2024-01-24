@@ -2,6 +2,7 @@ export function isInputInvalid(...inputs) {
     const forbiddenCharacters = ['$', '%', ';', '<', '>', ' '];
 
     for (const input of inputs) {
+        if (input === null) continue;
         if (forbiddenCharacters.some(char => input.includes(char)) || input === '') {
             return true;
         }
@@ -13,6 +14,7 @@ export function isInputInvalidSpaceAllowed(...inputs) {
     const forbiddenCharacters = ['$', '%', ';', '<', '>'];
 
     for (const input of inputs) {
+        if (input === null) continue;
         if (forbiddenCharacters.some(char => input.includes(char)) || input === '') {
             return true;
         }
